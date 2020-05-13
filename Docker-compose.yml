@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      RAILS_ENV: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/vb_app
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    
+  
+  web:
+    image: nginx
+    volumes:
+      - ./mysite.template:/etc/nginx/conf.d/mysite.template
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+    
