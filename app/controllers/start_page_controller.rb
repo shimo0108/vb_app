@@ -1,4 +1,8 @@
 class StartPageController < ApplicationController
-  def home
+  def index
   end
+
+  def show
+  end
+
 end
