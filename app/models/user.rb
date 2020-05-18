@@ -5,13 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:twitter]
 
-  def twitter
-    @user = User.from_omniauth(request.env["omniauth.auth"].except("extra"))
-      if @user.persisted?
-          sign_in_and_redirect @user
-      else
-          session["devise.user_attributes"] = @user.attributes
-          redirect_to new_user_registration_url
-      end
+  def self.from_omniauth(auth)
+    find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      user.username = auth["info"]["nickname"]
+      user.password = Devise.friendly_token[0,20] 
+      user.email = User.dumy_email(auth) 
+    end
+  end
+  
+  private
+    def self.dumy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
     end
 end
