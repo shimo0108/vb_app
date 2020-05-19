@@ -1,0 +1,30 @@
+
+<table class="table.table.table-hover">
+    <tbody>
+    <tr>
+        <th>性別</th>
+        <td><%= @pleyer.sex %></td>
+    </tr>
+
+     <tr>
+        <th>募集地域</th>
+        <td><%= @player.prefecture%></td>
+        
+    </tr>
+     <tr>
+        <th>希望ポジション</th>
+        <td><%= @player.position %></td>
+        
+    </tr>
+     
+     <tr>
+        <th>フリーコメント</th>
+        <td><%= @player.content %></td>
+        
+    </tr>          
+    
+    </tbody>
+     <td><%= link_to 'edit', edit_player_path,class:"btn btn-primary mr-3" %></td>
+      <td><%= link_to 'delete', @player,method: :delete,data:{confirm: "プロフィールを削除します。よろしいですか？"},class: 'btn btn-primary' %></td>
+
+</table>
