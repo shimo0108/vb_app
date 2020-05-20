@@ -1,0 +1,32 @@
+<% provide(:title,"show")%>
+ <table class="table.table.table-hover">
+    <tbody>       
+    <tr>
+        <th>ID</th>
+        <td><%=@user.id%></td>
+       
+    </tr>
+     <tr>
+        <th>NAME</th>
+        <td><%=@user.username%></td>
+        
+    </tr>
+     <tr>
+        <th>Email</th>
+        <td><%= @user.email%></td>
+    </tr>
+    
+     <tr>
+        <th>Created_at</th>
+        <td><%= @user.created_at %></td>
+        
+    <tr>
+        <th>Updated_at</th>
+        <td><%= @user.updated_at %></td>  
+    </tr>          
+    
+    </tbody>
+     <td><%= link_to 'edit', edit_admin_user_path,class:"btn btn-primary mr-3" %></td>
+      <td><%= link_to 'delete', [:admin,@user],method: :delete,data:{confirm: "user「#{@user.name}」を削除します。よろしいですか？"},class: 'btn btn-primary' %></td>
+
+ </table>

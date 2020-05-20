@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VbApp</title>
+    <title><%=yield(:title)%>| Let's VolleyBall</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <header>
       <nav>
         <% if user_signed_in? %>
@@ -22,11 +23,19 @@
         <% end %>
       </nav>
     </header>
+=======
+    <%= render 'layouts/header'%>
+>>>>>>> playerClass
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+<<<<<<< HEAD
       <%= yield %>
       
+=======
+    <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+>>>>>>> playerClass
   </body>
 </html>
