@@ -1,7 +1,8 @@
 class PlayersController < ApplicationController
-    before_action :authenticate_user!
+
 
     def index
+        @player = current_user.player
     end
   
     def new
@@ -9,8 +10,7 @@ class PlayersController < ApplicationController
     end
   
     def create
-        @player = Player.new(player_params)
-        @player.user_id =current_user.id
+        @player = current_user.build_player(player_params)
       
       if @player.save
         flash[:success] = "登録が完了しました。"
@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
     end
     
     def show
-        @player = current_user.players.find(params[:id])
+        @player = Player.find(params[:id])
     end
     
     def edit
@@ -50,6 +50,6 @@ class PlayersController < ApplicationController
     
   
     def player_params 
-      params.require(:player).permit(:gender,:prefecture,:schedule,:position,:content)
+      params.require(:player).permit(:gender,:prefecture,:schedule,:position,:content,:user_id)
     end
 end

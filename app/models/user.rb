@@ -15,6 +15,8 @@ class User < ApplicationRecord
       user.email = User.dumy_email(auth) 
     end
   end
+
+  validates :username, presence: true
   
   private
     def self.dumy_email(auth)

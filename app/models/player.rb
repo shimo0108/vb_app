@@ -2,5 +2,8 @@ class Player < ApplicationRecord
   
   belongs_to :user
   validates :user_id,presence:true
-  enum gender:{female:0, male:1}
+  enum gender: %i( 男性　
+                  女性 )
+
+
 end

@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
+  resources :players
   devise_for :users, controllers: {
     :omniauth_callbacks => "omniauth_callbacks",
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
   }
+  resources :users
 
-  resources :players
-
-  root 'start_page#index'
-  get  'start_page/show'
+  root 'start_page#home'
+  get 'start_page/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,6 @@
+<% provide(:title,"プレイヤー検索")%>
+ <h2>プレイヤーを検索します</h2>>
+
+ <%if @player %>
+    <%= link_to "プレイヤー詳細" ,player_path(current_user)%>
+ <% end %>

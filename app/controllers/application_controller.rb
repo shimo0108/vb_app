@@ -1,26 +1,20 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    
+    before_action :authenticate_user!
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
-
- 
     def after_sign_in_path_for(resource)
-        if current_user
-          flash[:notice] = "ログインに成功しました" 
-          root_url 
-        else
-          flash[:notice] = "新規登録完了しました。次にプロフィールを作成してください。" 
-          new_player_path
-        end
+        start_page_show_path
     end
     
-    
-    def after_sign_out_path_for(resource)
-        new_user_session_path 
-    end
+
 
     private
-
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_in, keys: [:username,:provider,:uid])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username,:provider,:uid])
+        devise_parameter_sanitizer.permit(:update_account, keys: [:username,:provider,:uid])
+    end
     
     
 end
