@@ -8,11 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-<<<<<<< HEAD
-  # config.secret_key = '2b32bd0bc0217c75d84d1f927b7dc6c8857bec33926bd92d95be9c3df26dbef99b3b7f68bd24914ed0417372975944b3d6ee9df2c9ea28f5a6a0c77af3ee3ca6'
-=======
   # config.secret_key = '79a12cd6d50fd9eb1ac06d0e74ffb04cb17baf2a2ce1c03aae44c21b1e5569de46a0bd24428782a8c05452eea1a773595744625a71f384c4996055955e245dfe'
->>>>>>> playerClass
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -118,11 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-<<<<<<< HEAD
-  # config.pepper = 'c60ff9514115ef0fc07afbd87cd8bccbb8fc12570be2c34cdf375209495dd486815879393fd753a4c811a1b430e4c54f379ae3dab18dbc53acd1b2a0ce68c391'
-=======
   # config.pepper = '7eba2caf4d6232d8ed2e86f61e7436d2bd9ece0163210b50429f2e38143ec81bb509dc8273547a789b35c0649f8ae8957230928f3fd6497f5d406aaa0837ea5f'
->>>>>>> playerClass
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -277,11 +269,6 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
-<<<<<<< HEAD
-  config.mailer_sender = "syk8153181531@gmail.com"
-=======
-
->>>>>>> playerClass
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
   # is mountable, there are some extra configurations to be taken into account.
@@ -308,9 +295,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-<<<<<<< HEAD
-  config.omniauth :twitter,"phKEk66SNZlnl5lOHdKBIZeSj","LEHd5qIbzYDwOkfw96by7Y33SVNk4S2FknF243J3V4QMBNXqq8"
-=======
   config.omniauth :twitter, "phKEk66SNZlnl5lOHdKBIZeSj", "LEHd5qIbzYDwOkfw96by7Y33SVNk4S2FknF243J3V4QMBNXqq8"
->>>>>>> playerClass
 end
