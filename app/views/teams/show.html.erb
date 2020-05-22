@@ -1,0 +1,33 @@
+<% provide(:title,"チームマイページ")%>
+ <table class="table.table.table-hover">
+    <tbody>       
+    
+     <tr>
+        <th>チーム名</th>
+        <td><%=@team.team_name%></td>
+        
+    </tr>
+     <tr>
+        <th>地域</th>
+        <td><%= @team.teamprefecture %></td>
+        
+    </tr>
+     <tr>
+        <th>募集ポジション</th>
+        <td><%= @team.recruitment_position %></td>
+       
+    </tr>
+     <tr>
+        <th>練習日</th>
+        <td><%= @team.practice_schedule %></td>
+        
+    <tr>
+        <th>募集コメント</th>
+        <td><%= @team.teamcomment %></td>
+        
+    </tr>          
+    
+    </tbody>
+        <td><%= link_to '編集', edit_team_path,class:"btn btn-primary mr-3" %></td>
+        <td><%= link_to '削除', @team, method: :delete,data:{confirm: "プレイヤー登録を削除します。よろしいですか？"},class: 'btn btn-primary' %></td>
+ </table>

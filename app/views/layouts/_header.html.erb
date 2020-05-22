@@ -4,11 +4,15 @@
             <nav>
                 <% if user_signed_in? %>
                     <%= link_to 'アカウント情報の変更', edit_user_registration_path %>
-                    <%= link_to 'プレイヤー情報登録', new_player_path%>   
-                    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                    <%= link_to 'プレイヤー情報登録', new_player_path%>
+                    <%= link_to 'チーム情報登録', new_team_path%>   
                     <% unless  @player.nil? %>
-                        <%= link_to 'プレイヤーマイページ', controller: "players" ,method: :get %>
+                        <%= link_to 'プレイヤー検索', player_path(current_user)%>
                     <% end %>
+                    <% unless  @team.nil? %>
+                        <%= link_to 'チーム検索', controller: "teams" ,method: :get %>
+                    <% end %>
+                    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
                 <% else %>
                     <%= link_to '今すぐ登録', new_user_registration_path %>
                     <%= link_to 'ログイン', new_user_session_path %>

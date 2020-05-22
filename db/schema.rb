@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_054828) do
     t.integer "gender", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_players_on_user_id_and_created_at", unique: true
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_054828) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_teams_on_user_id_and_created_at", unique: true
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 

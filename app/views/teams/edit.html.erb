@@ -1,0 +1,37 @@
+<% provide(:title,"チームデータ編集")%>
+<h2>チームデータを編集しよう。</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+ 
+    <%= form_with model:@team , local:true ,url: team_path do |f| %> 
+
+        <div class="form-group">
+            <%= f.label :team_name,'チーム名（必須）'%>
+            <%= f.text_field :team_name ,class:'form-control'%>  
+        </div>
+
+        <div class="form-group">
+            <%= f.label :teamprefecture, '地域(必須)' %>
+            <%= f.text_field :teamprefecture,class:'form-control'%>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :recruitment_position,'募集ポジション(必須)'%>
+            <%= f.text_field :position,class:'form-control'%>
+        </div> 
+
+         <div class="form-group">
+            <%= f.label :practice_schedule,'練習日'%>
+            <%= f.text_field :practice_schedule,class:'form-control'%>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :teamcomment,'募集コメント'%>
+            <%= f.text_area :teamcomment,class:'form-control'%>
+       </div>
+     
+      <%= f.submit "編集する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

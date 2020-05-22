@@ -5,7 +5,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label :username,"ユーザー名" %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
@@ -17,7 +17,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %>文字以上で入力してください。)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
