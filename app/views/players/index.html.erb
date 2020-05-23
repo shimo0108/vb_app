@@ -1,6 +1,29 @@
 <% provide(:title,"プレイヤー検索")%>
- <h2>プレイヤーを検索します</h2>>
-
- <%if @player %>
-    <%= link_to "プレイヤー詳細" ,player_path(current_user)%>
- <% end %>
+ <h2>プレイヤーを検索します</h2>
+<div class="player_index">
+        <table class="indextable">
+          <thead>
+            <tr>
+               <th>性別</th>
+               <th>地域</th>
+               <th>ポジション</th>
+               <th>練習参加可能日</th>
+               <th>フリーコメント</th>
+            </tr>
+          </thead>
+           <% @players.each do |player| %>
+          <tbody>
+             <tr>
+               <td><%= player.gender %></td>
+              <td><%= player.prefecture %></td>
+           　 <td><%= player.position %></td>
+              <td><%= player.schedule%></td>
+              <td><%= player.comment%></td>
+              <td><%= link_to '編集', edit_player_path(player),class:"btn btn-primary mr-3" %></td>
+              <td><%= link_to '削除', player,method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %></td>
+             </tr>
+          </tbody>
+          <%end%>
+       </table>
+    </div>
+</div>

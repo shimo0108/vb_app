@@ -6,7 +6,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :teamprefecture, null: false
       t.string :recruitment_position, null:false
       t.string :practice_schedule, null: false
-      t.references :user, foreign_key: true
+      t.references :user, uniqueness:true,foreign_key: true
 
 
       t.timestamps
