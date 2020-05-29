@@ -1,6 +1,14 @@
 class User < ApplicationRecord
+  before_save { self.email = email.downcase }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :nickname, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def self.from_omniauth(auth)
     find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
