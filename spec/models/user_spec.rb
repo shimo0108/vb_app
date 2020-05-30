@@ -61,4 +61,28 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email]).to include("はすでに存在します")
   end
 
+  example "メールアドレスが登録された際に小文字で登録される" do
+      user = User.create(
+      last_name: "tanaka",
+      first_name: "tarou",
+      nickname: "tarosan",
+      email: "TEST@EXaMPlE.Com",
+      password: "password"
+    )
+      user.save
+      expect(user.reload.email).to eq user.email.downcase
+  end
+
+  example "メールアドレスは適切な形で登録されているか。" do
+   user = User.create(
+      last_name: "tanaka",
+      first_name: "tarou",
+      nickname: "tarosan",
+      email: "a@@.com",
+      password: "password"
+    )
+    user.valid?
+    expect(user.errors[:email]).to include("は不正な値です")
+  end
+
 end
