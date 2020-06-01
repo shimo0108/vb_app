@@ -17,6 +17,8 @@ class User < ApplicationRecord
       user.nickname = auth["info"]["nickname"]
       user.password = Devise.friendly_token[0, 20]
       user.email = User.dumy_email(auth)
+      user.first_name = auth[:info][:name]
+      user.last_name = auth[:info][:name]
     end
   end
 
