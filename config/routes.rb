@@ -3,6 +3,9 @@ Rails.application.routes.draw do
                                     passwords: "users/passwords",
                                     sessions: "users/sessions",
                                     registrations: "users/registrations" }
+  resources :users
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 
   root "home#index"
 end

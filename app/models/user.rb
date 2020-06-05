@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :nickname, presence: true, length: { maximum: 50 }
   validates :first_name, presence: true, length: { maximum: 10 }
