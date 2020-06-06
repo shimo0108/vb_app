@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class= "row">
+    <div class="home_content_left col-md-3">
+      <%= render "shared/side_menu" %>
+    </div>
+  
+    <div class="home_content_right col-md-9">
+      <h1>メッセージ</h1>
+        <% @entries.each do |e| %>
+          <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.nickname%>さん</a></strong></h5>
+        <% end %>
+        <hr>
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <strong><%= m.content %></strong>
+          <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.nickname %>さん</a></strong></small>
+          <hr>
+        <% end %>
+      <% else %>
+        <h4 class="text-center">メッセージはまだありません</h4>
+      <% end %>
+
+      <%= form_for @message do |f| %>
+        <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+      <br>
+      <%= f.submit "投稿する" %>
+      <% end %>
+
+<%= link_to "ユーザー一覧に戻る", users_path %>
+      
+    </div>
+  </div>
+</div>
+

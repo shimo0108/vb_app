@@ -2,17 +2,19 @@
   <li>
     <%= link_to "ホーム", root_path %>
   </li>
-
+  <hr>
   <li>
-    <a href="#"><i class="#"></i>メッセージ</a>
+     <%= link_to "メッセージ", users_path %>
   </li>
+   <hr>
   <li>
-    <%= link_to "プロフィール", users_path %>
+    <%= link_to "プロフィール", user_path(current_user.id) %>
   </li>
-
+   <hr>
   <li>
     <a href="#"><i class="#"></i>タイムライン</a>
   </li>
+   <hr>
 </ul>
 
 <p class="small">
