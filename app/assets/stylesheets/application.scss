@@ -1,10 +1,14 @@
 @import "bootstrap";
+
 // ログイン画面
 .container-login {
-    @extend .container-fluid;
-    max-width: 576px;
-    padding: 2rem;
-    background-color: orange;
+    @extend .container-fluid; 
+    background-image : url( background_img.jpg);
+    background-size: cover;    
+}
+
+body{
+    color: seashell;
 }
 
 // 「ログインしました」などのフラッシュ用スタイル
@@ -18,98 +22,21 @@
 }
 
 // メインスタイル
-
-//footerのスタイル
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #f5f5f5;
-}
-.container {
-  width: auto;
-  max-width: 680px;
-  padding: 0 15px;
-}
-.container .text-muted {
-  margin: 20px 0;
-}
-
-//タイトル文字
-h3 {
-    font-size: 2.5rem;
+h3{
     font-weight: bold;
 }
 
+//タイトル文字
+
+
 //ホーム画面左部分のレイアウト
 .home_content_left {
-    background-color: #FFCC66;
+    background-color: rgb(202, 196, 207);
 }
 
 //ホーム画面右部分のレイアウト
-.home_content_right {
-    background-color: #FF9900;
-}
-// 募集チームを見てみようのスタイル
-.tags-list {
-    ul {
-        list-style-type: none;
-    }
-    li {
-        width: 20%;
-        float: left;
-        overflow: hidden;
-        margin: 1% 2.5% 1.5% 1.5%;
-        box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
-    }
-    a {
-        margin: 1% 0;
-        padding: 0.9rem;
-        border: 1px solid black;
-        border-radius: 5px;
-        display: block;
-        background-color: white;
-        text-decoration: none;
-        height: 4rem;
-        text-align: center;
-    }
-}
 
-//　タイムラインのスタイル
-.timeline {
-    background-color: #FF9900;
-}
-.home_timeline_box {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin:0.5rem;
-    background-color: white;
-    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
-    
-}
-
-//人気のチームから探すのスタイル
-.topteam_list_card{
-    height:90px;
-    border-radius: 5px;
-    margin:0.5rem;
-    background-color: white;
-    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
-}
-
-//人気のプレイヤーから探すのスタイル
-.topplayer_list_card{
-    height:90px;
-    border-radius: 5px;
-    margin:0.5rem;
-    background-color: white;
-    box-shadow: 6px 6px 10px rgba(0,0,0,0.5);
+.home_content_right{
+    background-image : url( background_img.jpg);
+    background-size: cover;
 }

@@ -1,5 +1,5 @@
 <% provide(:title,"メッセージ ")%>
-<div class="container-fluid">
+<div class="container-field">
   <div class= "row">
     <div class="home_content_left col-md-3">
       <%= render "shared/side_menu" %>
@@ -22,8 +22,6 @@
           <% if @messages.present? %>
             <% @messages.each do |m| %>
               <div class="chat-box">
-                <div class="chat-face">
-                </div>
                 <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
                   <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.nickname %>さん</a></strong></small>
                   <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
@@ -39,6 +37,7 @@
               <%= f.hidden_field :room_id, value: @room.id %>
                 <%= f.submit "投稿",class: 'form-submit'%>
           <% end %>
+        </div>
       <%= link_to "メッセージ一覧に戻る", rooms_path %>  
     </div>
   </div>
