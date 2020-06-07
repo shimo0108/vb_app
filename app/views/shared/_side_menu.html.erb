@@ -4,11 +4,15 @@
   </li>
   <hr>
   <li>
-     <%= link_to "メッセージ", users_path %>
+     <%= link_to "メッセージ", rooms_path%>
   </li>
    <hr>
   <li>
-    <%= link_to "プロフィール", user_path(current_user.id) %>
+    <% if current_user %>
+      <%= link_to "プロフィール", user_path(current_user.id) %>
+    <% else %>
+      <%= link_to "プロフィール", root_path %>
+    <% end %>
   </li>
    <hr>
   <li>

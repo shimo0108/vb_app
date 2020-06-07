@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class= "row">
+    <div class="home_content_left col-md-3">
+      <%= render "shared/side_menu" %>
+    </div>
+  
+    <div class="home_content_right col-md-9">
+      <h1 class="users-heading">メッセージ一覧</h1>
+<% @another_entries.each do |e| %>
+<div class="users-index-item">
+  <div class="user-right">
+  <%= link_to room_path(e.room.id) do %>
+    <%= e.user.nickname %><br>
+  <% end %>
+     <%= e.room.messages.order(created_at: :desc).take.try(:content) %>
+  </div>
+</div>
+<hr>
+<% end %>
+
+
+    <%= link_to "ユーザー一覧に戻る", users_path %>
+      
+    </div>
+  </div>
+</div>
