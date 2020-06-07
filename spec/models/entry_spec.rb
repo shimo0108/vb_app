@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  example '有効なファクトリを持つこと' do
+    entry = FactoryBot.create(:entry)
+    expect(entry).to be_valid
+    binding.pry
+  end
+  
 end
