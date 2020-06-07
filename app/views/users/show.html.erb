@@ -1,4 +1,4 @@
-<% provide(:title,"show")%>
+<% provide(:title,"プロフィール")%>
  
 <div class="container-fluid">
   <div class= "row">
@@ -32,7 +32,7 @@
           </tr>
           <tr>
             <th>登録日</th>
-            <td><%= @user.created_at %></td>
+            <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
           </tr>
         </tbody>
       </table>
