@@ -2,28 +2,28 @@
 
 // ログイン画面
 .container-login {
-    @extend .container-fluid; 
-    background-image : url( background_img.jpg);
-    background-size: cover;    
+  @extend .container-fluid; 
+  background-image : url( background_img.jpg);
+  background-size: cover;    
 }
 
 body{
-    color: seashell;
+  color: seashell;
 }
 
 // 「ログインしました」などのフラッシュ用スタイル
 .alert-notice {
-    @extend .alert-info;
-    height: auto;
+  @extend .alert-info;
+  height: auto;
 }
 
 .alert-alert {
-    @extend .alert-danger;
+  @extend .alert-danger;
 }
 
 // メインスタイル
 h3{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 //タイトル文字
@@ -31,12 +31,12 @@ h3{
 
 //ホーム画面左部分のレイアウト
 .home_content_left {
-    background-color: rgb(202, 196, 207);
+  background-color: rgb(202, 196, 207);
 }
 
 //ホーム画面右部分のレイアウト
 
 .home_content_right{
-    background-image : url( background_img.jpg);
-    background-size: cover;
+  background-image : url( background_img.jpg);
+  background-size: cover;
 }

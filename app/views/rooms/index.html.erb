@@ -7,15 +7,14 @@
   
     <div class="home_content_right col-md-9">
       <h1 class="users-heading">メッセージ一覧</h1>
-          <% @another_entries.each do |e| %>
+          <% @another_entries.each do |entry| %>
             <div class="users-index-item">
               <div class="user-right">
-                <%= link_to room_path(e.room.id) do %>
-                  <%= e.user.nickname %> 
-                  <small>更新日<%= e.room.messages.order(created_at: :desc).take.try(:created_at) %></small><br>
+                <%= link_to room_path(entry.room.id) do %>
+                  <%= entry.user.nickname %> 
+                  <small>更新日<%= entry.room.messages.order(created_at: :desc).take.try(:created_at) %></small><br>
                 <% end %>
-                <%= e.room.messages.order(created_at: :desc).take.try(:content) %>
-            
+                <%= entry.room.messages.order(created_at: :desc).take.try(:content) %>      
               </div>
             </div>
           <hr>
@@ -23,5 +22,3 @@
       <%= link_to "ホームに戻る", users_path %>
     </div>
   </div>
-
-
