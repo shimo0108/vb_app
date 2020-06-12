@@ -37,8 +37,8 @@
         </tbody>
       </table>
       <% unless @user.id == current_user.id %>
-          <% if @isRoom == true %>
-            <p><a href="/rooms/<%= @roomId %>">メッセージを送る</a>
+          <% if  @roomId %>
+            <p><a href="/rooms/<%=@roomId%>">メッセージを送る</a>
           <% else %>
             <%= form_for @room do |f| %>
               <%= fields_for @entry do |e| %>
@@ -51,3 +51,4 @@
     </div>
   </div>
 </div>
+q
