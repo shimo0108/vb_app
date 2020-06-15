@@ -37,18 +37,17 @@
         </tbody>
       </table>
       <% unless @user.id == current_user.id %>
-          <% if  @roomId %>
-            <p><a href="/rooms/<%=@roomId%>">メッセージを送る</a>
+          <%if  @rooms.present? %>
+            <p><%= link_to "メッセージを送る","/rooms/#{@rooms.id}" %></p>
           <% else %>
-            <%= form_for @room do |f| %>
+           <%= form_for @room do |f| %>
               <%= fields_for @entry do |e| %>
                 <%= e.hidden_field :user_id, value: @user.id %>
-              <% end %>           
-            <%= f.submit "メッセージを送る" %>
+              <% end %>
+            <%= f.submit "メッセージを送信しよう！" %>
             <% end %>
           <% end %>
       <% end %>
     </div>
   </div>
 </div>
-q

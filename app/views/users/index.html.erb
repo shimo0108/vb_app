@@ -1,24 +1,15 @@
 <% provide(:title,"ホーム ")%>
-<%= render "shared/flash_messages" %>
-
-  <!-- Page Content -->
-  <div class="container_field">
-
-    <div class="row">
-
+    
       <div class="home_content_left col-lg-3">
         <%= render "shared/side_menu" %>
         <small>テスト用　ユーザー一覧</small>
-  <% @users.each do |u| %>
-  <p><a href="/users/<%= u.id %>"><%= u.nickname %>さん</a></p>
-  <hr>
-  <% end %>
+          <% @users.each do |user| %> 
+            <p><%= link_to "#{user.nickname}さん", "/users/#{user.id}"%></p>
+            <hr>
+          <% end %>
   　  </div>
-        
-      <!-- /.col-lg-3 -->
-
+    
       <div class="home_content_right col-lg-9">
-
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -46,173 +37,28 @@
           </a>
         </div>
         
-
           <div><h3>プレイヤーを探す</h3></div><br>
         <div class="row">
-          
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤー名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤー名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤー名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
+          <%= render "shared/player_card" %>
+          <%= render "shared/player_card" %>
+          <%= render "shared/player_card" %>        
         </div>
-        
         <a href="#">もっとみる</a>
 
          <div><h3>チームを探す</h3></div><br>
         <div class="row">
-          
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">チーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">チーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">チーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
+          <%= render "shared/team_card" %>
+          <%= render "shared/team_card" %>
+          <%= render "shared/team_card" %>
         </div>
         <a href="#">もっとみる</a>
 
         <div><h3>募集掲示板をみる</h3></div><br>
-        <div class="row">
-          
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤーorチーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤーorチーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">プレイヤーorチーム名</a>
-                </h4>
-                <h5>希望ポジション</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">メッセージを送る</small>
-              </div>
-            </div>
-          </div>
+        <div class="row">         
+          <%= render "shared/timeline_card"%>
+          <%= render "shared/timeline_card"%>
+          <%= render "shared/timeline_card"%>
         </div>
         <a href="#">もっとみる</a>
       </div>
-      
-      <!-- /.col-lg-9 -->
 
-    </div>
-    <!-- /.row -->
-
-
-  </div>
-  <!-- /.container -->

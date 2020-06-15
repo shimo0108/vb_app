@@ -4,9 +4,9 @@
   </li>
   <hr>
   <li>
-     <%= link_to "メッセージ", rooms_path%>
+    <%= link_to "メッセージ", rooms_path%>
   </li>
-   <hr>
+  <hr>
   <li>
     <% if current_user %>
       <%= link_to "プロフィール", user_path(current_user.id) %>
@@ -16,15 +16,15 @@
   </li>
    <hr>
   <li>
-    <a href="#"><i class="#"></i>タイムライン</a>
+    <%= link_to "タイムライン","#"%>
   </li>
    <hr>
 </ul>
 
 <p class="small">
-  <a href="#">チーム情報の登録はこちらから</a>
+  <%= link_to "チーム情報の登録はこちらから","#"%>
 </p>
 <p class="small">
-  <a href="#">プレイヤー情報の登録はこちらから</a>
+  <%= link_to "プレイヤー情報の登録はこちらから","#"%>
 </p>
 

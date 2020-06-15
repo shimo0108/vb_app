@@ -1,19 +1,16 @@
 <% provide(:title,"メッセージ ")%>
-<%= render "shared/flash_messages" %>
-<div class="container-field">
-  <div class= "row">
+
+
     <div class="home_content_left col-md-3">
       <%= render "shared/side_menu" %>
     </div>
   
     <div class="home_content_right col-md-9">
       <h1>メッセージ</h1>
-      <% @entries.each do |e| %>
+      <% @entries.each do |entry| %>
         <div class="user-name">
         <strong>
-            <a class="rooms-user-link" href="/users/<%= e.user.id %>">
-            <%= e.user.nickname %>さん
-            </a>
+          <%= link_to "#{entry.user.nickname}さん", "/users/#{entry.user.id}"%>
         </strong>
         </div>
       <% end %>
@@ -21,11 +18,11 @@
       <div class="chats">
         <div class="chat">
           <% if @messages.present? %>
-            <% @messages.each do |m| %>
+            <% @messages.each do |message| %>
               <div class="chat-box">
-                <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
-                  <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.nickname %>さん</a></strong></small>
-                  <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+                <div class="chat-hukidashi"> <strong><%= message.content %></strong> <br>
+                  <small>by <strong><a href="/users/<%= message.user_id %>"><%= message.user.nickname %>さん</a></strong></small>
+                  <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
                   <hr>
                 </div>
               </div>
@@ -35,12 +32,9 @@
         <div class="posts">
           <%= form_for @message do |f| %>
             <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-              <%= f.hidden_field :room_id, value:"room.id"%>
+              <%= f.hidden_field :room_id, value:@room.id%>
                 <%= f.submit "投稿",class: 'form-submit'%>
           <% end %>
         </div>
       <%= link_to "メッセージ一覧に戻る", rooms_path %>  
     </div>
-  </div>
-</div>
-

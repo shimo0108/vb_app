@@ -3,10 +3,10 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.create
-    @entry1 = current_user.entries.create(room_id: @room.id)
-    @entry2 = Entry.create(entries_params)
+    @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)
+    @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
     if @room.save
-      redirect_to room_path(current_user.room_id)
+      redirect_to room_path(@room.id)
     else
       flash[:alert] = "エラーが発生しました。ホーム画面に戻ります。"
       redirect_to root_path
@@ -14,11 +14,11 @@ class RoomsController < ApplicationController
   end
 
   def show
-    room = Room.find_by(id: params[:id])
-    if current_user.entries.where(user_id: current_user.id, room_id: room.id).present?
-      @messages = room.messages
+    @room = Room.find_by(id: params[:id])
+    if current_user.entries.where(user_id: current_user.id, room_id: @room.id).present?
+      @messages = @room.messages
       @message = Message.new
-      @entries = room.entries
+      @entries = @room.entries
     else
       redirect_back(fallback_location: root_path)
     end
@@ -32,6 +32,6 @@ class RoomsController < ApplicationController
   private
 
   def entries_params
-    params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
+    
   end
 end

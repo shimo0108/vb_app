@@ -1,24 +1,23 @@
 <% provide(:title,"メッセージ一覧 ")%>
-<div class="container-field">
-  <div class= "row">
-    <div class="home_content_left col-md-3">
-      <%= render "shared/side_menu" %>
-    </div>
+
+<div class="home_content_left col-md-3">
+  <%= render "shared/side_menu" %>
+</div>
   
-    <div class="home_content_right col-md-9">
-      <h1 class="users-heading">メッセージ一覧</h1>
-          <% @another_entries.each do |entry| %>
-            <div class="users-index-item">
-              <div class="user-right">
-                <%= link_to room_path(entry.room.id) do %>
-                  <%= entry.user.nickname %> 
-                  <small>更新日<%= entry.room.messages.order(created_at: :desc).take.try(:created_at) %></small><br>
-                <% end %>
-                <%= entry.room.messages.order(created_at: :desc).take.try(:content) %>      
-              </div>
-            </div>
-          <hr>
+<div class="home_content_right col-md-9">
+  <h1 class="users-heading">メッセージ一覧</h1>
+    <% @another_entries.each do |entry| %>
+      <div class="users-index-item">
+        <div class="user-right">
+          <%= link_to room_path(entry.room.id) do %>
+            <%= entry.user.nickname %>
+              <small>更新日<%= entry.room.messages.order(created_at: :desc).take.try(:created_at) %></small><br>
           <% end %>
-      <%= link_to "ホームに戻る", users_path %>
-    </div>
-  </div>
+            <%= entry.room.messages.order(created_at: :desc).take.try(:content) %>      
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  <%= link_to "ホームに戻る", users_path %>
+</div>
+  
