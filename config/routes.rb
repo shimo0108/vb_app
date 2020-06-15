@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks",
-                                    passwords: "users/passwords",
-                                    registrations: "users/registrations" }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+  }
   resources :users
   resources :messages, only: [:create]
-  resources :rooms, only: [:create, :show, :index]
+  resources :rooms, only: %i(create show index)
 
-  root "users#index"
+  root 'users#index'
 end

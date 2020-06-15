@@ -1,20 +1,15 @@
-require:
-  - rubocop-rails
+inherit_from:
+  - .rubocop_airbnb.yml
 
-Rails:
-  Enabled: true
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
+#以下にはrubocopで検証したくないフォルダを指定する
 AllCops:
   Exclude:
-    - 'db/schema.rb'
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
     - 'vendor/**/*'
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'
-
-AsciiComments:
-  Enabled: false
+    - 'path/ruby'

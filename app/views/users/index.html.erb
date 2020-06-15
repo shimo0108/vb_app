@@ -4,7 +4,7 @@
   <%= render "shared/side_menu" %>
     <small>テスト用　ユーザー一覧</small>
       <% @users.each do |user| %> 
-        <p><%= link_to "#{user.nickname}さん", "/users/#{user.id}"%></p>
+        <p><%= link_to "#{user.nickname}さん", user_path(user.id)%></p>
       <hr>
       <% end %>
 </div>
@@ -38,24 +38,18 @@
   </div>
   <div><h3>プレイヤーを探す</h3></div><br>
     <div class="row">
-      <%= render "shared/player_card" %>
-      <%= render "shared/player_card" %>
-      <%= render "shared/player_card" %>        
+      <%= render "shared/player_card" %>       
     </div>
       <a href="#">もっとみる</a>
 
   <div><h3>チームを探す</h3></div><br>
     <div class="row">
       <%= render "shared/team_card" %>
-      <%= render "shared/team_card" %>
-      <%= render "shared/team_card" %>
     </div>
       <a href="#">もっとみる</a>
 
   <div><h3>募集掲示板をみる</h3></div><br>
     <div class="row">         
-      <%= render "shared/timeline_card"%>
-      <%= render "shared/timeline_card"%>
       <%= render "shared/timeline_card"%>
     </div>
       <a href="#">もっとみる</a>
