@@ -1,40 +1,39 @@
 <% provide(:title,"メッセージ ")%>
 
-
-    <div class="home_content_left col-md-3">
-      <%= render "shared/side_menu" %>
-    </div>
+<div class="home_content_left col-md-3">
+  <%= render "shared/side_menu" %>
+</div>
   
-    <div class="home_content_right col-md-9">
-      <h1>メッセージ</h1>
-      <% @entries.each do |entry| %>
-        <div class="user-name">
-        <strong>
-          <%= link_to "#{entry.user.nickname}さん", "/users/#{entry.user.id}"%>
-        </strong>
-        </div>
-      <% end %>
-      <hr>
-      <div class="chats">
-        <div class="chat">
-          <% if @messages.present? %>
-            <% @messages.each do |message| %>
-              <div class="chat-box">
-                <div class="chat-hukidashi"> <strong><%= message.content %></strong> <br>
-                  <small>by <strong><a href="/users/<%= message.user_id %>"><%= message.user.nickname %>さん</a></strong></small>
-                  <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
-                  <hr>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="posts">
-          <%= form_for @message do |f| %>
-            <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-              <%= f.hidden_field :room_id, value:@room.id%>
-                <%= f.submit "投稿",class: 'form-submit'%>
-          <% end %>
-        </div>
-      <%= link_to "メッセージ一覧に戻る", rooms_path %>  
+<div class="home_content_right col-md-9">
+  <h1>メッセージ</h1>
+  <% @entries.each do |entry| %>
+    <div class="user-name">
+      <strong>
+        <%= link_to "#{entry.user.nickname}さん", "/users/#{entry.user.id}"%>
+      </strong>
     </div>
+  <% end %>
+  <hr>
+  <div class="chats">
+    <div class="chat">
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <div class="chat-box">
+            <div class="chat-hukidashi"> <strong><%= message.content %></strong> <br>
+              <small>by <strong><%= link_to "#{message.user.nickname}さん", "/users/#{message.user.id}"%></strong></small>
+                <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
+                <hr>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <div class="posts">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value:@room.id%>
+          <%= f.submit "投稿",class: 'form-submit'%>
+    <% end %>
+  </div>
+  <%= link_to "メッセージ一覧に戻る", rooms_path %>  
+</div>

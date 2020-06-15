@@ -41,6 +41,7 @@ group :development do
   gem "spring-commands-rspec"
   gem "rubocop", require: false
   gem "rubocop-rails"
+  gem "bullet"
 end
 
 group :test do

@@ -11,13 +11,12 @@
         <div class="user-right">
           <%= link_to room_path(entry.room.id) do %>
             <%= entry.user.nickname %>
-              <small>更新日<%= entry.room.messages.order(created_at: :desc).take.try(:created_at) %></small><br>
+              <small> 更新日 <%= entry.room.messages.order(created_at: :desc).first.try(:created_at) %></small><br>
           <% end %>
-            <%= entry.room.messages.order(created_at: :desc).take.try(:content) %>      
+            <%= entry.room.messages.order(created_at: :desc).first.try(:content) %>      
         </div>
       </div>
       <hr>
     <% end %>
   <%= link_to "ホームに戻る", users_path %>
 </div>
-  
