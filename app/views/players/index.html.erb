@@ -1,0 +1,22 @@
+<% provide(:title,"ホーム ")%>
+
+<div class="home_content_left col-lg-3">
+  <%= render "shared/side_menu" %>
+</div>
+    
+<div class="home_content_right col-lg-9">
+  <small>テスト用　ユーザー一覧</small><br>
+    <% @players.each do |player| %>
+      <div class="player_data">
+        <%= player.gender %>
+        <%= player.prefecture %>
+        <%= player.available_day%>
+        <%= player.positions.name%>
+        <%= player.comment%>
+        <%= link_to '編集', edit_player_path(player),class:"btn btn-primary mr-3" %>
+        <%= link_to '削除', player,method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
+      </div>
+    <%end%>
+</div>
+
+

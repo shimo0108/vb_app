@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_122141) do
+ActiveRecord::Schema.define(version: 2020_06_17_060948) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_122141) do
 
   create_table "players", force: :cascade do |t|
     t.integer "gender", default: 0, null: false
-    t.integer "position", default: 0, null: false
     t.text "comment"
     t.integer "user_id"
     t.integer "available_day", default: 0, null: false
@@ -41,6 +40,14 @@ ActiveRecord::Schema.define(version: 2020_06_16_122141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_players_on_user_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_positions_on_player_id"
   end
 
   create_table "rooms", force: :cascade do |t|

@@ -2,13 +2,14 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    omniauth_callbacks: 'omniauth_callbacks',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations',
-  }
+                       omniauth_callbacks: "omniauth_callbacks",
+                       passwords: "users/passwords",
+                       registrations: "users/registrations",
+                     }
   resources :users
   resources :messages, only: [:create]
   resources :rooms, only: %i(create show index)
+  resources :players
 
-  root 'users#index'
+  root "users#index"
 end

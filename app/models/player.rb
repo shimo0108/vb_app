@@ -1,17 +1,19 @@
 class Player < ApplicationRecord
   belongs_to :user
+  has_many :positions
+
+  accepts_nested_attributes_for :positions
 
   enum gender:{
-    "___"0, 男:1, 女:2
-  }
-  enum position:{
-    "___"0, ウィングスパイカー:1, ミドルブロッカー:2, セッター:3, オポジット:4, リベロ:5
-  }
+    "未入力":0, 男:1, 女:2
+  }, _suffix: true
+
   enum available_day:{
-    "___"0, 平日:1, 土日:2, いつでも:3
-  }
+    "未入力":0, 平日:1, 土日:2, いつでも:3
+  }, _suffix: true
+  
   enum prefecture:{
-     "---":0,
+     "未入力":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
      茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
      新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
@@ -21,5 +23,5 @@ class Player < ApplicationRecord
      徳島県:36,香川県:37,愛媛県:38,高知県:39,
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
      沖縄県:47
-  }
+  }, _suffix: true
 end
