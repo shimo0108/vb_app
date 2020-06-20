@@ -15,6 +15,7 @@ class PlayersController < ApplicationController
         flash[:success] = "登録が完了しました。"
         redirect_to root_path
       else 
+        flash[:danger] = "登録できませんでした"
         render 'new'
       end       
   end
@@ -22,6 +23,6 @@ class PlayersController < ApplicationController
   private
   
     def player_params 
-      params.require(:player).permit(:gender, :prefecture, :comment, :available_day, positions_attributes: :name )
+      params.require(:player).permit(:gender, :prefecture, :comment, :available_day, positions:{name: []} )
     end
 end

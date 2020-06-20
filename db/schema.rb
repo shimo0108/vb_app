@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_060948) do
+ActiveRecord::Schema.define(version: 2020_06_19_063233) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_06_17_060948) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "player_positions", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_player_positions_on_player_id"
+    t.index ["position_id"], name: "index_player_positions_on_position_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.integer "gender", default: 0, null: false
     t.text "comment"
@@ -43,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_060948) do
   end
 
   create_table "positions", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

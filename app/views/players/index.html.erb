@@ -8,15 +8,17 @@
   <small>テスト用　ユーザー一覧</small><br>
     <% @players.each do |player| %>
       <div class="player_data">
+        <%= link_to "#{player.user.nickname}さん", user_path(player.user.id)%>
         <%= player.gender %>
         <%= player.prefecture %>
         <%= player.available_day%>
-        <%= player.positions.name%>
+        <%= player.positions%>
         <%= player.comment%>
         <%= link_to '編集', edit_player_path(player),class:"btn btn-primary mr-3" %>
         <%= link_to '削除', player,method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
       </div>
     <%end%>
 </div>
+
 
 

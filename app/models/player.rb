@@ -1,7 +1,9 @@
 class Player < ApplicationRecord
   belongs_to :user
-  has_many :positions
+  has_many :player_positions
+  has_many :positions, through: :player_positions
 
+  accepts_nested_attributes_for :player_positions, allow_destroy: true
   accepts_nested_attributes_for :positions
 
   enum gender:{
@@ -24,4 +26,6 @@ class Player < ApplicationRecord
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
      沖縄県:47
   }, _suffix: true
+
+ 
 end

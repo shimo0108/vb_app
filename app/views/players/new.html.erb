@@ -19,16 +19,13 @@
       <%= f.select :available_day, Player.available_days.keys, class: 'form-control'%>
     </div>
 
-      <%= f.fields_for :positions do |position| %>
-       <div class="form-group">
-          <%= position.label :name, "ポジション（複数選択可）" %><br> 
-          <%= position.check_box :name, value: "wing-spiker" %>
-          <%= position.check_box :name, value: "middle-blocker" %>
-          <%= position.check_box :name, value: "opposite" %>
-          <%= position.check_box :name, value: "setter" %>
-          <%= position.check_box :name, value: "libero" %>
-        </div>
-      <% end %>
+    <div class="form-group">
+      <%= f.label :name, 'ポジション（複数選択可）'%><br>
+        <% %w(ウィングスパイカー ミドルブロッカー セッター リベロ オポジット).each.with_index do |positions,i| %>
+          <%= check_box_tag 'player[positions][][name]', positions,false,id:"name#{i}"%>
+          <%= positions %>
+        <% end %>
+    </div>
 
     <div class="form-group">
       <%= f.label :comment, 'フリーコメント'%>
