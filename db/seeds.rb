@@ -12,5 +12,11 @@
               password: password
 )
 end
+Position.create(display_name: "ウィングスパイカー",name: "wing_spiker")
+Position.create(display_name: "ミドルブロッカー",name: "middle_brocker")
+Position.create(display_name: "セッター",name: "setter")
+Position.create(display_name: "オポジット",name: "opposite")
+Position.create(display_name: "リベロ",name: "libero")
+
 
 

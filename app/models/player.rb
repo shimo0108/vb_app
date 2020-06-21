@@ -3,9 +3,6 @@ class Player < ApplicationRecord
   has_many :player_positions
   has_many :positions, through: :player_positions
 
-  accepts_nested_attributes_for :player_positions, allow_destroy: true
-  accepts_nested_attributes_for :positions
-
   enum gender:{
     "未入力":0, 男:1, 女:2
   }, _suffix: true

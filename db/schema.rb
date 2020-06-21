@@ -52,11 +52,10 @@ ActiveRecord::Schema.define(version: 2020_06_19_063233) do
   end
 
   create_table "positions", force: :cascade do |t|
+    t.string "display_name", null: false
     t.string "name", null: false
-    t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_positions_on_player_id"
   end
 
   create_table "rooms", force: :cascade do |t|
