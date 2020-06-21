@@ -20,10 +20,10 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :name, 'ポジション（複数選択可）'%><br>
-      <% @positions.each_with_index do |position, i| %>
-        <%= check_box_tag "positions[#{position.name.to_sym}]",@positions, false ,id: "name#{i}" %>
-        <%= position.display_name %>
+      <%= f.label 'ポジション（複数選択可）'%><br>
+      <% @positions.each_with_index do |category| %>
+        <%= check_box_tag "positions[#{category.name}][#{category.id}]",@positions ,false %>
+        <%= category.display_name %>
       <% end %>
     </div>
 

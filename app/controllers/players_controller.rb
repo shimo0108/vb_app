@@ -12,9 +12,9 @@ class PlayersController < ApplicationController
   def create
     @player = current_user.build_player(player_params)
       if @player.save
-       positions =  Positions.players.find_by(params[:positions])
-          positions.each do |position|
-            Player_positions.create(player_id: @player.id, position_id: position.id)
+       positions_category =  params[:positions]
+          positions_category.each do |position|
+           PlayerPosition.create(player_id: @player.id, position_id: position.id)
           end
         flash[:success] = "登録が完了しました。"
         redirect_to root_path
@@ -30,4 +30,4 @@ class PlayersController < ApplicationController
     def player_params 
       params.require(:player).permit(:gender, :prefecture, :comment, :available_day, {name: []} )
     end
-end
+  end
