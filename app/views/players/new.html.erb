@@ -22,7 +22,7 @@
     <div class="form-group">
       <%= f.label 'ポジション（複数選択可）'%><br>
       <% @positions.each_with_index do |category| %>
-        <%= check_box_tag "positions[#{category.name}][#{category.id}]",@positions ,false %>
+        <%= check_box_tag "positions[#{category.name}][position_id:#{category.id}]",@positions ,false %>
         <%= category.display_name %>
       <% end %>
     </div>

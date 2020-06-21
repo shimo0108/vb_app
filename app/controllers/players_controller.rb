@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
       if @player.save
        positions_category =  params[:positions]
           positions_category.each do |position|
-           PlayerPosition.create(player_id: @player.id, position_id: position.id)
+           Player_positions.create(player_id: @player.id, position_id: position.id)
           end
         flash[:success] = "登録が完了しました。"
         redirect_to root_path
