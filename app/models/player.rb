@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   belongs_to :user
-  has_many :player_positions
-  has_many :positions, through: :player_positions
+  has_many :PlayerPositions
+  has_many :positions, through: :PlayerPositions
 
   enum gender:{
     "未入力":0, 男:1, 女:2
