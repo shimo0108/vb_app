@@ -21,8 +21,8 @@
 
     <div class="form-group">
       <%= f.label 'ポジション（複数選択可）'%><br>
-      <% @positions.each_with_index do |category| %>
-        <%= check_box_tag "position_id[]"%>
+      <% @positions.each.with_index(1) do | category | %>
+        <%= check_box_tag "positions[]", category.id%>
         <%= category.display_name %>
       <% end %>
     </div>
