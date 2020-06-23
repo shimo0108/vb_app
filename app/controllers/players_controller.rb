@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user!
   def index
-    @players = Player.all
+    @players = Player.all.includes(:user)
   end
   
   def new
