@@ -24,7 +24,14 @@
 <p class="small">
   <%= link_to "チーム情報の登録はこちらから","#"%>
 </p>
-<p class="small">
-  <%= link_to "プレイヤー情報の登録はこちらから", "/players/new"%>
-</p>
+<% if @player %>
+   <p class="small">
+      <%= link_to "プレイヤー情報", player_path(@player)%>
+    </p>
+  <% else %>
+    <p class="small">
+      <%= link_to "プレイヤー情報の登録はこちらから", "/players/new"%>
+    </p>
+<%end%>
+
 

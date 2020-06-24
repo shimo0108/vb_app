@@ -3,6 +3,10 @@ class Player < ApplicationRecord
   has_many :PlayerPositions
   has_many :positions, through: :PlayerPositions
 
+  validates :gender, :exclusion => ['未入力']
+  validates :available_day, :exclusion => ['未入力']
+  validates :prefecture, :exclusion => ['未入力']
+
   enum gender:{
     "未入力":0, 男:1, 女:2
   }, _suffix: true
