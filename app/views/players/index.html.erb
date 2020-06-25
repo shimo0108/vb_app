@@ -14,8 +14,10 @@
         <%= player.available_day%>
         <%= player.positions.pluck(:display_name).join(", ") %><br>
         <%= player.comment%><br>
-        <%= link_to '編集', edit_player_path(player),class:"btn btn-primary mr-3" %>
-        <%= link_to '削除', player,method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
+        <% if current_user.player == player %>
+          <%= link_to '編集', edit_player_path(player.id),class:"btn btn-primary mr-3" %>
+          <%= link_to '削除', player,method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
+        <% end %>
       </div>
     <%end%>
 </div>

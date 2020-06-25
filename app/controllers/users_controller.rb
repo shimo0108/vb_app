@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: :show
+  before_action :authenticate_user!, only: [:show, :index]
 
   def index
     @users = User.all
-    #@player = current_user.player
+    @player = current_user.player
+    @players = Player.all.includes(:user)
   end
 
   def show
