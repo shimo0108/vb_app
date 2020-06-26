@@ -50,6 +50,13 @@ class PlayersController < ApplicationController
       end
   end
 
+  def destroy
+    @player = Player.find_by(id: params[:id])
+      @player.destroy!
+      flash[:success] = "登録が完了しました。"
+      render :root_path
+  end
+
   private
   
     def player_params 
