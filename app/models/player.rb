@@ -2,6 +2,7 @@ class Player < ApplicationRecord
   belongs_to :user
   has_many :PlayerPositions
   has_many :positions, through: :PlayerPositions
+  accepts_nested_attributes_for :PlayerPositions, allow_destroy: true
 
   validates :gender, :exclusion => ['未入力']
   validates :available_day, :exclusion => ['未入力']

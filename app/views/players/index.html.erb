@@ -10,7 +10,6 @@
       <div class="player_data">
         <%= link_to "#{player.user.nickname}さん", user_path(player.user.id)%><br>
         <%= player.gender %>
-        <%= player.prefecture %>
         <%= player.available_day%>
         <%= player.positions.pluck(:display_name).join(", ") %><br>
         <%= player.comment%><br>
