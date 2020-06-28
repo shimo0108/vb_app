@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @players = Player.all.includes(:user)
   end
@@ -34,7 +35,7 @@ class PlayersController < ApplicationController
   def update
      @player = Player.find_by(id: params[:id])
      @positions = Position.all
-     select_positions = @player.PlayerPositions
+     select_positions = @player.player_positions
       ActiveRecord::Base.transaction do
         @player.update!(player_params)
         select_positions.clear
@@ -46,15 +47,21 @@ class PlayersController < ApplicationController
           redirect_to root_path  
       rescue
         flash[:danger] = "必須項目を入力してください。"
-        render :new
+        render :edit
       end
   end
 
   def destroy
-    @player = Player.find_by(id: params[:id])
-      @player.destroy!
-      flash[:success] = "登録が完了しました。"
-      render :root_path
+      @players = Player.all.includes(:user)
+      @player = Player.find(params[:id])
+      if @player.destroy
+        flash[:success] = "削除が完了しました。"
+        redirect_to root_path
+      else 
+        flash.now[:danger] = "削除が失敗しました。"
+        render :index
+        binding.pry
+      end
   end
 
   private

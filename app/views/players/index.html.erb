@@ -15,7 +15,7 @@
         <%= player.comment%><br>
         <% if current_user.player == player %>
           <%= link_to '編集', edit_player_path(player.id),class:"btn btn-primary mr-3" %>
-          <%= link_to '削除', player,method: :destroy,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
+          <%= link_to '削除', player_path(player.id),method: :delete,data:{confirm: "プレイヤー情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
         <% end %>
       </div>
     <%end%>
