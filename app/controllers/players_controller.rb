@@ -52,7 +52,6 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-      @players = Player.all.includes(:user)
       @player = Player.find(params[:id])
       if @player.destroy
         flash[:success] = "削除が完了しました。"
@@ -60,7 +59,6 @@ class PlayersController < ApplicationController
       else 
         flash.now[:danger] = "削除が失敗しました。"
         render :index
-        binding.pry
       end
   end
 

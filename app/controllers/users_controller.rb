@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     @players = Player.all.includes(:user)
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(image_params)
+    redirect_to user_path
+  end
+
   def show
     @user = User.find(params[:id])
     return if @user == current_user
@@ -20,5 +26,11 @@ class UsersController < ApplicationController
       @room = Room.new
       @entry = Entry.new
     end
+  end
+
+  private
+
+  def image_params
+    params.require(:user).permit(:image)
   end
 end

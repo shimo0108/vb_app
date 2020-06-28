@@ -7,50 +7,69 @@
     </div>
   
     <div class="home_content_right col-md-9">
-      <div class="profile-left">
-      </div>
-      <div>
-      <h1>プロフィール</h1>
-      <table class="table.table.table-hover">
-        <tbody>       
-          <tr>
-            <th>ID</th>
-            <td><%=@user.id%></td>
-          </tr>
-          <tr>
-            <th>名字</th>
-            <td><%=@user.last_name%></td> 
-          </tr>
-          <tr>
-            <th>名前</th>
-            <td><%= @user.first_name%></td>
-          </tr>
-          <tr>
-            <th>ニックネーム</th>
-            <td><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th>登録日</th>
-            <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% unless @user.id == current_user.id %>
-          <% if  @roomId.present? %>
-            <p><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
-          <% else %>
-           <%= form_for @room do |f| %>
-              <%= fields_for @entry do |e| %>
-                <%= e.hidden_field :user_id, value: @user.id %>
-              <% end %>
-              <%= f.submit "メッセージを送信しよう！" %>
+      <div class="row">
+        <div class="profile-left col-md-5">
+          <%if @user.image.attached? %>
+            <tr>
+              <th>画像</th>
+              <td> <%= image_tag @user.image %></td>
+            </tr>
+          <% end %>
+          <% if current_user %>
+            <%= form_for @user ,url: user_path(@user) do |f| %>
+              <div class="form-group">
+                <%= f.label :image %>
+                <%= f.file_field :image, class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "登録", class: "btn btn-primary" %>
+              </div>
             <% end %>
           <% end %>
-      <% end %>
+        </div>
+        <div class="profile-right col-md-7">
+          <h1>プロフィール</h1>
+          <table class="table.table.table-hover">
+            <tbody>       
+              <tr>
+                <th>ID</th>
+                <td><%=@user.id%></td>
+              </tr>
+              <tr>
+                <th>名字</th>
+                <td><%=@user.last_name%></td> 
+              </tr>
+              <tr>
+                <th>名前</th>
+                <td><%= @user.first_name%></td>
+              </tr>
+              <tr>
+                <th>ニックネーム</th>
+                <td><%= @user.nickname %></td>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <th>登録日</th>
+                <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              </tr>
+            </tbody>
+          </table>
+          <% unless @user.id == current_user.id %>
+              <% if  @roomId.present? %>
+                <p><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
+              <% else %>
+              <%= form_for @room do |f| %>
+                  <%= fields_for @entry do |e| %>
+                    <%= e.hidden_field :user_id, value: @user.id %>
+                  <% end %>
+                  <%= f.submit "メッセージを送信しよう！" %>
+                <% end %>
+              <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
