@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
      select_positions = @player.player_positions
       ActiveRecord::Base.transaction do
         @player.update!(player_params)
-        select_positions.clear
+        select_positions.destroy_all
           positions_ids = params[:positions]
             positions_ids.each do |position_id|              
               PlayerPosition.create!(player_id: @player.id, position_id: position_id)            
