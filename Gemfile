@@ -28,6 +28,7 @@ gem "rails-i18n", "~> 5.1"
 gem "bootstrap", "~> 4.4.1"
 gem "devise-bootstrap-views", "~> 1.0"
 gem "jquery-rails"
+gem "mini_magick"
 
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)

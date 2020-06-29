@@ -9,16 +9,14 @@
     <div class="home_content_right col-md-9">
       <div class="row">
         <div class="profile-left col-md-5">
+          <h2>プロフィール写真</h2>
           <%if @user.image.attached? %>
-            <tr>
-              <th>画像</th>
-              <td> <%= image_tag @user.image %></td>
-            </tr>
+            <div class="profile-image"><%= image_tag @user.image.variant(combine_options:{resize:"320x320^",crop:"320x320+0+0",gravity: :center}).processed %></div>
           <% end %>
           <% if current_user %>
             <%= form_for @user ,url: user_path(@user) do |f| %>
               <div class="form-group">
-                <%= f.label :image %>
+                <%= f.label "他の写真を登録する" %>
                 <%= f.file_field :image, class: "form-control" %>
               </div>
               <div class="form-group">
