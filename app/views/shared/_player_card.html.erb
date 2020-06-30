@@ -3,6 +3,8 @@
   <div class="card h-100">
     <%if player.user.image.attached? %>
       <%= image_tag player.user.image.variant(combine_options:{resize:"200x200^",crop:"400x700+0+0",gravity: :center}).processed %>
+    <% else %>
+       <img class="card-img-top" src="http://placehold.it/700x400?text=LET'S VOLLEY BALL">
     <% end %>
     <div class="card-body">
       <h4 class="card-title"><%= link_to "#{player.user.nickname}", user_path(player.user.id)%>( <small><%= player.prefecture%></small>)<small><%= player.gender %></small><hr></h4>

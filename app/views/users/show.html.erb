@@ -13,10 +13,10 @@
           <%if @user.image.attached? %>
             <div class="profile-image"><%= image_tag @user.image.variant(combine_options:{resize:"320x320^",crop:"320x320+0+0",gravity: :center}).processed %></div>
           <% end %>
-          <% if current_user %>
+          <% if current_user == @user %>
             <%= form_for @user ,url: user_path(@user) do |f| %>
               <div class="form-group">
-                <%= f.label "他の写真を登録する" %>
+                <%= f.label "写真を登録する" %>
                 <%= f.file_field :image, class: "form-control" %>
               </div>
               <div class="form-group">
