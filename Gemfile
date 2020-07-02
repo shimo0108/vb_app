@@ -15,6 +15,9 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "websocket-extensions"
 gem "faker"
+gem "mini_magick"
+gem "ransack"
+gem "kaminari"
 
 # ログイン機能
 gem "devise"
@@ -28,7 +31,6 @@ gem "rails-i18n", "~> 5.1"
 gem "bootstrap", "~> 4.4.1"
 gem "devise-bootstrap-views", "~> 1.0"
 gem "jquery-rails"
-gem "mini_magick"
 
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)

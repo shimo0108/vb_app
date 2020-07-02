@@ -13,7 +13,7 @@
         <p class="card-text"><%= player.comment%></p>
     </div>
       <div class="card-footer">
-        <small class="text-muted">メッセージを送る</small>
+        <small class="text-muted"><%= link_to "詳しく見る", user_path(player.user.id)%></small>
       </div>
   </div>
 </div>

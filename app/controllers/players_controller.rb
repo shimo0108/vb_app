@@ -2,9 +2,11 @@ class PlayersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @players = Player.all.includes(:user)
+    @positions = Position.all
+    @search = Player.includes(:user).ransack(params[:q])
+    @players = @search.result.includes(:user).page(params[:page]).per(10)
   end
-  
+
   def new
     @player = current_user.build_player
     @positions = Position.all
