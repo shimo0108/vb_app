@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
 
   def index
     @positions = Position.all
-    @search = Player.includes(:user).ransack(params[:q])
+    @search = Player.ransack(params[:q])
     @players = @search.result.includes(:user).page(params[:page]).per(10)
   end
 
@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
               PlayerPosition.create!(player_id: @player.id, position_id: position_id)            
             end
           flash[:success] = "登録が完了しました。"
-          redirect_to root_path  
+          redirect_to root_path
       rescue
         flash[:danger] = "必須項目を入力してください。"
         render :new
