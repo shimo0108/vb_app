@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @player = current_user.player
-    @players = Player.all.includes(user: [image_attachment: :blob])
+    @players = Player.includes(user: [image_attachment: :blob]).first(3)
   end
 
   def update

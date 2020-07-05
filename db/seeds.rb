@@ -12,6 +12,12 @@
               password: password
 )
 end
+User.create(last_name: "ユーザー",
+            first_name: "テスト",
+            nickname: "テストユーザー",
+            email: "test@example.com",
+            password: "password"
+          )
 Position.create(display_name: "ウィングスパイカー",name: "wing_spiker")
 Position.create(display_name: "ミドルブロッカー",name: "middle_brocker")
 Position.create(display_name: "セッター",name: "setter")
