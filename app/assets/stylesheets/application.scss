@@ -24,7 +24,16 @@ body{
 h3{
   font-weight: bold;
 }
-
+.top_title{
+  width: 80%;
+  height: 600px;
+  text-align: center;
+  padding-left: 80px;
+  font-size: 2rem;
+  small{
+    font-size: 1rem;
+  }
+}
 
 //ホーム画面左部分のレイアウト
 .home_content_left {
