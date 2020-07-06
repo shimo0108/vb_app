@@ -8,8 +8,9 @@
     <% end %>
     <div class="card-body">
       <h4 class="card-title"><%= link_to "#{player.user.nickname}", user_path(player.user.id)%>( <small><%= player.prefecture%></small>)<small><%= player.gender %></small><hr></h4>
-      <h5 class="card-subtitle" >希望ポジション(<%= player.available_day%>)</h5>
+      <h5 class="card-subtitle" >希望ポジション</h5>
         <small class="position-name"><%= player.positions.pluck(:display_name).join(", ") %></small><hr>
+      <h5 class="card-subtitle" >練習参加可能日(<%= player.available_day%>)</h5><hr>
         <p class="card-text"><%= player.comment%></p>
     </div>
       <div class="card-footer">
