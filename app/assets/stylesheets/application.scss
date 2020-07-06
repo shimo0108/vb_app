@@ -61,4 +61,8 @@ h3{
 .position-name{
   color: darken($color: #000000, $amount: 0);
 }
-//プロフィール写真のレイアウト
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
