@@ -19,19 +19,19 @@
         バレーボールをするための環境を探すプレイヤーと人材が不足しているチームを繋ぐマッチングサイトです。<hr>
       </small>
   </div>
-  <div><h3>プレイヤーを探す</h3></div><br>
+  <div class="sub_title"><h3>プレイヤーを探す</h3></div><br>
     <div class="row">
       <%= render "shared/player_card" %>       
     </div>
        <%= link_to 'もっと見る', "/players/" , class: 'nav-link' %>
 
-  <div><h3>チームを探す</h3></div><br>
+  <div class="sub_title"><h3>チームを探す</h3></div><br>
     <div class="row">
       <%= render "shared/team_card" %>
     </div>
       <a href="#">もっとみる</a>
 
-  <div><h3>募集掲示板をみる</h3></div><br>
+  <div class="sub_title"><h3>募集掲示板をみる</h3></div><br>
     <div class="row">         
       <%= render "shared/timeline_card"%>
     </div>
