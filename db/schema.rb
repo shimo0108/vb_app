@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_025253) do
   end
 
   create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
     t.integer "gender", default: 0, null: false
     t.text "comment"
     t.integer "user_id"

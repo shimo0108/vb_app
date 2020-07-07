@@ -3,6 +3,11 @@
 <div class="container-login p-4">
 <h1>チーム新規登録</h1>
   <%= form_for  @team do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, "チーム名"%>
+      <%= f.text_field :name, class: "form-control"%>          
+    </div>
      
     <div class="form-group">
       <%= f.label :gender, "募集する性別（必須）"%>
@@ -29,7 +34,7 @@
 
     <div class="form-group">
       <%= f.label :comment, 'フリーコメント'%>
-      <%= f.text_area :comment,class:'form-control'%>
+      <%= f.text_area :comment, class:'form-control'%>
     </div>
      
     <%= f.submit "登録する", class: "btn btn-primary" %>

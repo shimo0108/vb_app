@@ -3,7 +3,11 @@
 <div class="container-login p-4">
 <h1>チーム情報編集</h1>
   <%= form_for  @team do |f| %>
-     
+     <div class="form-group">
+      <%= f.label :name, "チーム名"%>
+      <%= f.text_field :name, class: "form-control"%>          
+    </div>
+
     <div class="form-group">
       <%= f.label :gender, "希望する性別（必須）"%>
       <%= f.select :gender, Team.genders.keys, class: "form-control"%>          
