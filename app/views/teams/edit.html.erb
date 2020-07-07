@@ -1,0 +1,37 @@
+<% provide(:title,"チーム情報編集 ")%>
+
+<div class="container-login p-4">
+<h1>チーム情報編集</h1>
+  <%= form_for  @team do |f| %>
+     
+    <div class="form-group">
+      <%= f.label :gender, "希望する性別（必須）"%>
+      <%= f.select :gender, Team.genders.keys, class: "form-control"%>          
+    </div>
+
+    <div class="form-group">
+      <%= f.label :prefecture, '募集地域(必須)'%>
+      <%= f.select :prefecture, Team.prefectures.keys,　class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :available_day, '練習日（必須）'%>
+      <%= f.select :available_day, Team.available_days.keys, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label '希望ポジション（複数選択可）'%><br>
+      <% @positions.each do |category| %>
+        <%= check_box_tag "positions[]", category.id%>
+        <%= category.display_name %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :comment, 'フリーコメント'%>
+      <%= f.text_area :comment,class:'form-control'%>
+    </div>
+     
+    <%= f.submit "登録する", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_one :player, dependent: :destroy
+  has_one :team, dependent: :destroy
   has_one_attached :image
 
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }

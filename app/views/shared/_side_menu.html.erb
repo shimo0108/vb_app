@@ -21,9 +21,15 @@
    <hr>
 </ul>
 
-<p class="small">
-  <%= link_to "チーム情報の登録はこちらから","#"%>
-</p>
+<% if @team %>
+   <p class="small">
+      <%= link_to "マイチーム情報を編集する", edit_team_path(@team)%>
+    </p>
+  <% else %>
+    <p class="small">
+      <%= link_to "チーム情報の登録はこちらから", "/teams/new"%>
+    </p>
+<%end%>
 <% if @player %>
    <p class="small">
       <%= link_to "マイプレイヤー情報を編集する", edit_player_path(@player)%>

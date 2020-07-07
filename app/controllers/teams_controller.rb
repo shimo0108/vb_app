@@ -1,25 +1,25 @@
-class PlayersController < ApplicationController
+class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def index
     @positions = Position.all
-    @search = Player.ransack(params[:q])
-    @players = @search.result.includes(:user).page(params[:page]).per(5)
+    @search = Team.ransack(params[:q])
+    @teams = @search.result.includes(:user).page(params[:page]).per(5)
   end
 
   def new
-    @player = current_user.build_player
+    @team = current_user.build_team
     @positions = Position.all
   end
   
   def create
-    @player = current_user.build_player(player_params)
+    @team = current_user.build_team(team_params)
     @positions = Position.all
       ActiveRecord::Base.transaction do
-        @player.save!
+        @team.save!
           positions_ids = params[:positions]
             positions_ids.each do |position_id|              
-              PlayerPosition.create!(player_id: @player.id, position_id: position_id)            
+              TeamPosition.create!(team_id: @team.id, position_id: position_id)      
             end
           flash[:success] = "登録が完了しました。"
           redirect_to root_path
@@ -30,20 +30,20 @@ class PlayersController < ApplicationController
   end
 
   def edit
-     @player = Player.find_by(id: params[:id])
+     @team = Team.find_by(id: params[:id])
      @positions = Position.all
   end
 
   def update
-     @player = Player.find_by(id: params[:id])
+     @team = Team.find_by(id: params[:id])
      @positions = Position.all
-     select_positions = @player.player_positions
+     select_positions = @team.team_positions
       ActiveRecord::Base.transaction do
-        @player.update!(player_params)
+        @team.update!(team_params)
         select_positions.destroy_all
           positions_ids = params[:positions]
             positions_ids.each do |position_id|              
-              PlayerPosition.create!(player_id: @player.id, position_id: position_id)        
+              TeamPosition.create!(team_id: @team.id, position_id: position_id)            
             end
           flash[:success] = "登録が完了しました。"
           redirect_to root_path  
@@ -54,8 +54,8 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-      @player = Player.find(params[:id])
-      if @player.destroy
+      @team = Team.find(params[:id])
+      if @team.destroy
         flash[:success] = "削除が完了しました。"
         redirect_to root_path
       else 
@@ -66,8 +66,8 @@ class PlayersController < ApplicationController
 
   private
   
-    def player_params 
-      params.require(:player).permit(:gender, :prefecture, :comment, :available_day, position_id:[] )
+    def team_params 
+      params.require(:team).permit(:gender, :prefecture, :comment, :available_day, position_id:[] )
     end
 
 end

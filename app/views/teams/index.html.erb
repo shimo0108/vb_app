@@ -1,0 +1,74 @@
+<% provide(:title,"ホーム ")%>
+
+<div class="home_content_left col-lg-3">
+  <%= render "shared/side_menu" %>
+</div>
+    
+<div class="home_content_right col-lg-9">
+  <h1>チーム検索</h1>
+    <div class="panel-body">
+      <%= search_form_for @search do |f| %>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="form-group">
+                <div class="form-group"> 
+                  <%= f.label :gender_eq, "募集する性別（必須）"%>
+                  <%= f.select :gender_eq, Team.genders.map{|k| k}, {include_blank:"指定なし"},class: "form-control"%>     
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group">
+                <div class="form-group"> 
+                  <%= f.label :prefecture_eq, "募集地域（必須）"%>
+                  <%= f.select :prefecture_eq, Team.prefectures.map{|k| k}, {include_blank:"指定なし"},class: "form-control"%>     
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group">
+                <div class="form-group"> 
+                  <%= f.label :available_day_eq, '練習日（必須）'%>
+                  <%= f.select :available_day_eq, Team.available_days.map{|k| k}, {include_blank:"指定なし"},class: "form-control"%>     
+                </div>
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="form-group">
+              <% @positions.each do |position| %>
+                <label>        
+                  <%= f.check_box :team_positions_position_id_eq_any, { multiple: true }, position.id, '' %>
+                  <%= position.display_name%>
+                </label>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label :comment_cont, "フリーコメント（部分一致も含む）"%>
+              <%= f.search_field :comment_cont, class: "form-control", include_blank: '未入力'%>
+            </div>
+          </div>
+        </div>
+        <%= f.submit '検索', class: "btn btn-primary" %>
+        <%= link_to 'クリア', url_for, class: "btn btn-primary" %>
+      <% end %>
+    <div>
+  </div>
+  <h3>ユーザー一覧(検索結果)</h3><br>
+    <% @teams.each do |team| %>
+      <div class="player_data">
+        <%= link_to "#{team.user.nickname}さん", user_path(team.user.id)%><br>
+        <%= team.gender %>
+        <%= team.prefecture %>
+        <%= team.available_day%>
+        <%= team.positions.pluck(:display_name).join(", ") %><br>
+        <%= team.comment%><br>
+        <% if current_user.team == team %>
+          <%= link_to '編集', edit_team_path(team.id),class:"btn btn-primary mr-3" %>
+          <%= link_to '削除', team_path(team.id),method: :delete,data:{confirm: "チーム情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    <%end%>
+    <%= paginate @teams %>
+</div>

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @users = User.all
     @player = current_user.player
     @players = Player.includes(user: [image_attachment: :blob]).first(3)
+    @team = current_user.team
+    @teams = Team.includes(user: [image_attachment: :blob]).first(3)
   end
 
   def update
