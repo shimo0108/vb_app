@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :rooms, only: %i(create show index)
   resources :players
+  resources :teams
   resources :positions
 
   root "users#index"
