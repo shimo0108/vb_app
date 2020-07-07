@@ -1,74 +1,90 @@
 <% provide(:title,"プロフィール")%>
- 
-<div class="container-fluid">
-  <div class= "row">
-    <div class="home_content_left col-md-3">
-      <%= render "shared/side_menu" %>
-    </div>
-  
-    <div class="home_content_right col-md-9">
-      <div class="row">
-        <div class="profile-left col-md-5">
-          <h2>プロフィール写真</h2>
-          <%if @user.image.attached? %>
-            <div class="profile-image"><%= image_tag @user.image.variant(combine_options:{resize:"320x320^",crop:"320x320+0+0",gravity: :center}).processed %></div>
-          <% end %>
-          <% if current_user == @user %>
-            <%= form_for @user ,url: user_path(@user) do |f| %>
-              <div class="form-group">
-                <%= f.label "写真を登録する" %>
-                <%= f.file_field :image, class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.submit "登録", class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% end %>
+
+<div class="home_content_left col-lg-3">
+  <%= render "shared/side_menu" %>
+</div>
+
+<div class="home_content_right col-lg-9">
+  <div class="profile-title">
+    <h1>プロフィール</h1>
+    <%if @user.image.attached? %>
+      <div class="profile-image"><%= image_tag @user.image.variant(combine_options:{resize:"320x320^",crop:"320x320+0+0",gravity: :center}).processed %></div>
+    <% end %>
+    <% if current_user == @user %>
+      <%= form_for @user ,url: user_path(@user) do |f| %>
+        <div class="form-group">
+          <%= f.label "写真を登録する" %>
+          <%= f.file_field :image, class: "form-control" %>
         </div>
-        <div class="profile-right col-md-7">
-          <h1>プロフィール</h1>
-          <table class="table.table.table-hover">
-            <tbody>       
-              <tr>
-                <th>ID</th>
-                <td><%=@user.id%></td>
-              </tr>
-              <tr>
-                <th>名字</th>
-                <td><%=@user.last_name%></td> 
-              </tr>
-              <tr>
-                <th>名前</th>
-                <td><%= @user.first_name%></td>
-              </tr>
-              <tr>
-                <th>ニックネーム</th>
-                <td><%= @user.nickname %></td>
-              </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <td><%= @user.email %></td>
-              </tr>
-              <tr>
-                <th>登録日</th>
-                <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-              </tr>
-            </tbody>
-          </table>
-          <% unless @user.id == current_user.id %>
-              <% if  @roomId.present? %>
-                <p><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
-              <% else %>
-              <%= form_for @room do |f| %>
-                  <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
-                  <% end %>
-                  <%= f.submit "メッセージを送信しよう！" %>
-                <% end %>
-              <% end %>
-          <% end %>
+        <div class="form-group">
+          <%= f.submit "登録", class: "btn btn-primary" %>
         </div>
+      <% end %>
+    <% end %>
+  <div class="table-responsive-md">
+    <table class="table text-nowrap text-light">
+      <tr>
+        <th>*</th>
+        <th>データ</th>
+      </tr>
+      <tr><td>ID</td><td><%=@user.id%></td></tr>
+      <tr><td>名字</td><td><%=@user.last_name%></td></tr>
+      <tr><td>名前</td><td><%= @user.first_name%></td></tr>
+      <tr><td>ニックネーム</td><td><%= @user.nickname %></td></tr>
+      <tr><td>メールアドレス</td><td><%= @user.email %></td></tr>
+      <tr><td>登録日</td><td><%= @user.created_at.strftime("%Y-%m-%d %H:%M") %></td></tr>
+  </table>
+  </div>
+  </div> 
+
+    <% unless @user.id == current_user.id %>
+      <% if  @roomId.present? %>
+        <p><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送信しよう！" %>
+        <% end %>
+      <% end %>
+    <% end %>    
+  <div class="profile-title">
+    <h1>プレイヤー情報</h1>
+    <%if @user.player.present?%>
+      <div class="table-responsive-md">
+        <table class="table text-nowrap text-light">
+          <tr>
+            <th>*</th>
+            <th>データ</th>
+          </tr>
+          <tr><td>性別</td><td><%=@user.player.gender%></td></tr>
+          <tr><td>都道府県</td><td><%=@user.player.prefecture%></td></tr>
+          <tr><td>練習参加可能日</td><td><%= @user.player.available_day%></td></tr>
+          <tr><td>希望ボジション</td><td><%= @user.player.positions.pluck(:display_name).join(", ") %></td></tr>
+        </table>
       </div>
-    </div>
+    <% else %>
+      <h4>＊プレイヤー情報はまだ登録されていません</h4>
+    <% end %>
+  </div>
+  <div class="profile-title">
+    <h1>チーム情報</h1>
+    <%if @user.team.present?%>
+      <div class="table-responsive-md">
+        <table class="table text-nowrap text-light">
+          <tr>
+            <th>*</th>
+            <th>データ</th>
+          </tr>
+          <tr><td>募集する性別</td><td><%=@user.team.gender%></td></tr>
+          <tr><td>募集する都道府県</td><td><%=@user.team.prefecture%></td></tr>
+          <tr><td>練習日</td><td><%= @user.team.available_day%></td></tr>
+          <tr><td>希望ボジション</td><td><%= @user.team.positions.pluck(:display_name).join(", ") %></td></tr>
+        </table>
+      </div>
+    <% else %>
+      <h4>＊チーム情報はまだ登録されていません</h4>
+    <% end %>
   </div>
 </div>

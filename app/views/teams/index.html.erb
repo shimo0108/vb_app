@@ -61,20 +61,29 @@
       <% end %>
     <div>
   </div>
-  <h3>ユーザー一覧(検索結果)</h3><br>
+  <h3>チーム一覧(検索結果)</h3><br>
+  <div class="row">
     <% @teams.each do |team| %>
-      <div class="player_data">
-        <%= link_to "#{team.user.nickname}さん", user_path(team.user.id)%><br>
-        <%= team.gender %>
-        <%= team.prefecture %>
-        <%= team.available_day%>
-        <%= team.positions.pluck(:display_name).join(", ") %><br>
-        <%= team.comment%><br>
-        <% if current_user.team == team %>
-          <%= link_to '編集', edit_team_path(team.id),class:"btn btn-primary mr-3" %>
-          <%= link_to '削除', team_path(team.id),method: :delete,data:{confirm: "チーム情報を削除します。よろしいですか？"},class: 'btn btn-primary' %>
-        <% end %>
+      <div class="index_content col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <%if team.user.image.attached? %>
+            <%= image_tag team.user.image.variant(combine_options:{resize:"200x200^",crop:"400x700+0+0",gravity: :center}).processed %>
+          <% else %>
+            <img class="card-img-top" src="http://placehold.it/700x400?text=LET'S VOLLEY BALL">
+          <% end %>
+        <div class="card-body">
+          <h4 class="card-title"><%= link_to "#{team.name}", user_path(team.user.id)%>( <small><%= team.prefecture%></small>)<small><%= team.gender %></small><hr></h4>
+          <h5 class="card-subtitle" >募集ポジション</h5>
+            <small class="position-name"><%= team.positions.pluck(:display_name).join(", ") %></small><hr>
+          <h5 class="card-subtitle" >練習日(<%= team.available_day%>)</h5><hr>
+            <p class="card-text"><%= team.comment%></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"><%= link_to "詳しく見る", user_path(team.user.id)%></small>
+        </div>
       </div>
+    </div>
     <%end%>
     <%= paginate @teams %>
+  </div>
 </div>

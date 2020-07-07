@@ -37,6 +37,19 @@ h3{
 .sub_title{
   text-align: center;
 }
+//プロフィール画面のレイアウト
+.profile-title{
+  text-align: center;
+}
+.profile-image{
+  text-align: center;
+}
+.profile-text{
+  text-align: center;
+}
+.table-responsive-md{
+  margin: auto;
+}
 
 //ホーム画面左部分のレイアウト
 .home_content_left {
@@ -67,4 +80,7 @@ h3{
 .pagination>li>a {          
   border: none;     
   color: #696969;   
+}
+header,footer{
+  width: 102%;
 }

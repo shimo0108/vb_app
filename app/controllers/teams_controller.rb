@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   def index
     @positions = Position.all
     @search = Team.ransack(params[:q])
-    @teams = @search.result.includes(:user).page(params[:page]).per(5)
+    @teams = @search.result.includes(user: :image_attachment).page(params[:page]).per(5)
   end
 
   def new
