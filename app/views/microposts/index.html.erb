@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+  <div class="home_content_left col-lg-3">
+    <%= render "shared/side_menu" %>
+  </div>
+  <div class="home_content_right col-lg-9">
+    <h1><%= current_user.nickname %></h1>
+      <span>タイムライン（<%= current_user.microposts.count %>）</span>
+    <div class="micropost_form">
+      <%= render "shared/micropost_form" %>
+    </div>
+    <div class="col-md-8">
+      <h3>タイムライン</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% end %>

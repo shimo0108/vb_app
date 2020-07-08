@@ -32,6 +32,10 @@ class User < ApplicationRecord
     end
   end
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   private
 
   def self.dumy_email(auth)

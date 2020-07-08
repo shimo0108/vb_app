@@ -1,0 +1,6 @@
+<%= form_for(@micropost) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "タイムラインを投稿しよう！" %>
+  </div>
+  <%= f.submit "投稿する", class: "btn btn-primary" %>
+<% end %>
