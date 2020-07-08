@@ -1,4 +1,4 @@
-30.times do |n|
+50.times do |n|
   last_name = "太郎"
   first_name = "test#{n+1}"
   nickname = Faker::Name.name
@@ -30,6 +30,7 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+
 users = User.order(:created_at).take(15)
 15.times do 
   users.each { |n| n.create_player!(gender:  Faker::Number.rand(1..2),
@@ -41,6 +42,12 @@ end
 players = Player.all
   players.each { |n| n.player_positions.create!(player_id:n.id,position_id: Faker::Number.rand(1..5))}
 
+users = User.all
+user  = users.second
+following = users[3..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
 
 
 

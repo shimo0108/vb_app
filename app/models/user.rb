@@ -9,6 +9,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
 
   has_many :microposts, dependent: :destroy
+  has_many :active_follow_members, class_name: "FollowMember", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_follow_members, source: :followed
+  has_many :passive_follow_members, class_name: "FollowMember", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_follow_members, source: :follower
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_one :player, dependent: :destroy
@@ -34,6 +38,18 @@ class User < ApplicationRecord
 
   def feed
     Micropost.where("user_id = ?", id)
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    active_follow_members.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private

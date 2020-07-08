@@ -1,4 +1,18 @@
-<ul class="home_content_sidemenu">
+<div class="home_content_sidemenu">
+<% if user_signed_in? %>
+  <div class="home_content col-lg-9">
+    <h2>ようこそ<br><%= current_user.nickname %>さん</h2>
+      <span>タイムライン（<%= current_user.microposts.count %>）</span>
+  <%unless current_user=@user %>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  <%else%>
+    <hr>
+  <%end%>
+  </div>
+<% end %>
+<ul>
   <li>
     <%= link_to "ホーム", root_path %>
   </li>
@@ -39,5 +53,4 @@
       <%= link_to "プレイヤー情報の登録はこちらから", "/players/new"%>
     </p>
 <%end%>
-
-
+</div>

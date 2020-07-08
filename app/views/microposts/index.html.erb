@@ -5,6 +5,9 @@
   <div class="home_content_right col-lg-9">
     <h1><%= current_user.nickname %></h1>
       <span>タイムライン（<%= current_user.microposts.count %>）</span>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
     <div class="micropost_form">
       <%= render "shared/micropost_form" %>
     </div>

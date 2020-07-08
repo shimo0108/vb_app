@@ -6,13 +6,17 @@ Rails.application.routes.draw do
                        passwords: "users/passwords",
                        registrations: "users/registrations",
                      }
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :messages, only: [:create]
   resources :rooms, only: %i(create show index)
   resources :players
   resources :teams
   resources :positions
   resources :microposts
-
+  resources :follow_members, only: [:create, :destroy]
   root "users#index"
 end

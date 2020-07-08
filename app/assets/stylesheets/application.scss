@@ -50,6 +50,9 @@ h3{
 .table-responsive-md{
   margin: auto;
 }
+.profile-stats{
+  text-align: center;
+}
 
 //ホーム画面左部分のレイアウト
 .home_content_left {
@@ -122,4 +125,35 @@ span.picture {
   input {
     border: 0;
   }
+}
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px ;
+    color: white;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+}
+
+.users.follow {
+  padding: 0;
 }
