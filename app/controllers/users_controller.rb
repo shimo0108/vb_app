@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.page(params[:page]).per(5)
     return if @user == current_user
 
     common_room_ids = current_user.entries.pluck(:room_id) & @user.entries.pluck(:room_id)

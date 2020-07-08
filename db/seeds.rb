@@ -24,14 +24,20 @@ Position.create(id:3, display_name: "セッター",name: "setter")
 Position.create(id:4, display_name: "オポジット",name: "opposite")
 Position.create(id:5, display_name: "リベロ",name: "libero")
 
+users = User.order(:created_at).take(6)
+15.times do
+  content = Faker::Games::Fallout.quote
+  users.each { |user| user.microposts.create!(content: content) }
+end
+
 users = User.order(:created_at).take(15)
-  15.times do 
+15.times do 
   users.each { |n| n.create_player!(gender:  Faker::Number.rand(1..2),
                                 prefecture: Faker::Number.rand(1..47),
                                 available_day: Faker::Number.rand(1..3),
                                 comment: "よろしくおねがいします！"            
                               )}
-  end
+end
 players = Player.all
   players.each { |n| n.player_positions.create!(player_id:n.id,position_id: Faker::Number.rand(1..5))}
 

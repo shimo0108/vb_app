@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :players
   resources :teams
   resources :positions
+  resources :microposts, only: [:create, :destroy]
 
   root "users#index"
 end
