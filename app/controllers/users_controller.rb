@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index, :following, :followers]
 
   def index
     @users = User.all
@@ -29,6 +29,20 @@ class UsersController < ApplicationController
       @room = Room.new
       @entry = Entry.new
     end
+  end
+
+  def following
+    @title = "フォローユーザー一覧"
+    @user = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(10)
+    render "show_follow"
+  end
+
+  def followers
+    @title = "フォロワーユーザー一覧"
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(10)
+    render "show_follow"
   end
 
   private

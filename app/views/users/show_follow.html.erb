@@ -1,0 +1,22 @@
+<% provide(:title, @title) %>
+<div class="home_content_left col-lg-3">
+  <%= render "shared/side_menu" %>
+</div>
+
+<div class="home_content_right col-lg-9">
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <table>
+          <tr>
+            <td><%= user.nickname %>さん</td>
+            <td><%= link_to '詳細', user_path(user) %></td>
+            <hr>
+          </tr>
+        </table>
+      <% end %>
+      <%= paginate @users %>
+    <% end %>
+  </div>
+</div>

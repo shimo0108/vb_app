@@ -31,6 +31,18 @@
     </div>
   </div>
   <%= render 'follow_form' if signed_in? %>
+  <% unless @user.id == current_user.id %>
+      <% if  @roomId.present? %>
+        <p class="btn btn-light"><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送信しよう！" %>
+        <% end %>
+      <% end %>
+    <% end %>    
   <div class="table-responsive-md">
     <table class="table text-nowrap text-light">
       <tr>
@@ -46,19 +58,6 @@
   </table>
   </div>
   </div> 
-
-    <% unless @user.id == current_user.id %>
-      <% if  @roomId.present? %>
-        <p><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>
-      <% else %>
-        <%= form_for @room do |f| %>
-          <%= fields_for @entry do |e| %>
-            <%= e.hidden_field :user_id, value: @user.id %>
-          <% end %>
-          <%= f.submit "メッセージを送信しよう！" %>
-        <% end %>
-      <% end %>
-    <% end %>    
   <div class="profile-title">
     <h1>プレイヤー情報</h1>
     <%if @user.player.present?%>
