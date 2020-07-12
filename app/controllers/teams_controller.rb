@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @current_user = current_user
     @positions = Position.all
     @search = Team.ransack(params[:q])
     @teams = @search.result.includes(user: :image_attachment).page(params[:page]).per(5)

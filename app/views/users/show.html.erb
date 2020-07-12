@@ -30,7 +30,7 @@
       <%= render 'shared/stats' %>
     </div>
   </div>
-  <%= render 'follow_form' if signed_in? %>
+  <%= render 'follow_form' if user_signed_in? %>
   <% unless @user.id == current_user.id %>
       <% if  @roomId.present? %>
         <p class="btn btn-light"><%= link_to "メッセージを送る",rooms_path(@roomId.id) %></p>

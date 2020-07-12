@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @players = Player.includes(user: [image_attachment: :blob]).first(3)
     @team = current_user.team
     @teams = Team.includes(user: [image_attachment: :blob]).first(3)
+    @current_user = current_user
   end
 
   def update
@@ -21,7 +22,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(5)
     return if @user == current_user
-
     common_room_ids = current_user.entries.pluck(:room_id) & @user.entries.pluck(:room_id)
     if common_room_ids.present?
       @roomId = Room.where(id: common_room_ids).first
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def following
     @title = "フォローユーザー一覧"
     @user = User.find(params[:id])
-    @users = @user.following.page(params[:page]).per(10)
+    @users = @user.following.includes(:image_attachment).page(params[:page]).per(10)
     render "show_follow"
   end
 

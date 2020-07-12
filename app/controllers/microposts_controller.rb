@@ -3,6 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
+    @current_user = current_user
     if user_signed_in?
       @micropost  = current_user.microposts.new
       @feed_items = current_user.feed.includes(:user).page(params[:page]).per(5)

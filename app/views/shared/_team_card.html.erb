@@ -2,7 +2,7 @@
 <div class="index_content col-lg-4 col-md-6 mb-4">
   <div class="card h-100">
     <%if team.user.image.attached? %>
-      <%= image_tag team.user.image.variant(combine_options:{resize:"200x200^",crop:"400x700+0+0",gravity: :center}).processed %>
+      <%= image_tag  team.user.image.variant(resize:"200x200^")%>
     <% else %>
        <img class="card-img-top" src="http://placehold.it/700x400?text=LET'S VOLLEY BALL">
     <% end %>

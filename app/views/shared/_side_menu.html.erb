@@ -1,17 +1,4 @@
 <div class="home_content_sidemenu">
-<% if user_signed_in? %>
-  <div class="home_content col-lg-9">
-    <h2>ようこそ<br><%= current_user.nickname %>さん</h2>
-      <span>タイムライン（<%= current_user.microposts.count %>）</span>
-  <%unless current_user=@user %>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  <%else%>
-    <hr>
-  <%end%>
-  </div>
-<% end %>
 <ul>
   <li>
     <%= link_to "ホーム", root_path %>
@@ -22,11 +9,7 @@
   </li>
   <hr>
   <li>
-    <% if current_user %>
       <%= link_to "プロフィール", user_path(current_user.id) %>
-    <% else %>
-      <%= link_to "プロフィール", root_path %>
-    <% end %>
   </li>
    <hr>
   <li>
@@ -35,18 +18,18 @@
    <hr>
 </ul>
 
-<% if @team %>
+<% if current_user.team.present? %>
    <p class="small">
-      <%= link_to "マイチーム情報を編集する", edit_team_path(@team)%>
+      <%= link_to "マイチーム情報を編集する", edit_team_path(current_user.team)%>
     </p>
   <% else %>
     <p class="small">
       <%= link_to "チーム情報の登録はこちらから", "/teams/new"%>
     </p>
 <%end%>
-<% if @player %>
+<% if current_user.player.present? %>
    <p class="small">
-      <%= link_to "マイプレイヤー情報を編集する", edit_player_path(@player)%>
+      <%= link_to "マイプレイヤー情報を編集する", edit_player_path(current_user.player)%>
     </p>
   <% else %>
     <p class="small">

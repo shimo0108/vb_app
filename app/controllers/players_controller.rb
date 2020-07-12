@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @current_user = current_user
     @positions = Position.all
     @search = Player.ransack(params[:q])
     @players = @search.result.includes(user: :image_attachment).page(params[:page]).per(6)

@@ -4,19 +4,25 @@
 </div>
 
 <div class="home_content_right col-lg-9">
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
+  <h3><%= @title %></h3>
     <% if @users.any? %>
-      <% @users.each do |user| %>
-        <table>
-          <tr>
-            <td><%= user.nickname %>さん</td>
-            <td><%= link_to '詳細', user_path(user) %></td>
-            <hr>
-          </tr>
-        </table>
-      <% end %>
+      <div class="row">
+        <% @users.each do |user| %>
+          <div class="col-4">
+            <%if user.image.attached? %>
+              <%= image_tag user.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed %><hr>   
+            <% else %>
+              <img class="img-top" src="http://placehold.it/80x80?text=LET'S VOLLEY BALL"><hr>   
+            <% end %>
+          </div>
+          <div class="col-8">
+            <h4><%= link_to "#{user.nickname}さん", user_path(user.id)%></h4>   
+               
+          </div>
+          
+   <% end %>
+   
       <%= paginate @users %>
-    <% end %>
-  </div>
+       </div>
+  <% end %>
 </div>
