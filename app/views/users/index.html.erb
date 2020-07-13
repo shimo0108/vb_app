@@ -31,11 +31,24 @@
     </div>
       <%= link_to 'もっと見る', "/teams/" , class: 'nav-link' %>
 
-  <div class="sub_title"><h3>募集掲示板をみる</h3></div><br>
-    <div class="row">         
-      <%= render "shared/timeline_card"%>
-    </div>
-      <a href="#">もっとみる</a>
+  <div class="sub_title"><h3>タイムラインをみる</h3></div><br>
+    <% if @microposts.any? %>
+      <ol class="microposts">
+        <% @microposts.each do |micropost|%>
+          <li id="タイムライン<%= micropost.id %>">
+            <%if micropost.user.image.attached? %>
+              <%= image_tag micropost.user.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed %><hr>   
+            <% else %>
+              <img class="img-top" src="http://placehold.it/80x80?text=LET'S VOLLEY BALL"><hr>   
+            <% end %>
+            <span class="user"><%= link_to micropost.user.nickname, micropost.user %></span>
+            <span class="content"><%= micropost.content %></span>
+            <span class="timestamp">投稿時間　<%= time_ago_in_words(micropost.created_at) %>前.</span>
+          </li>    
+      <% end %> 
+     </ol>
+    <%= paginate @microposts %>
+    <% end %> 
 </div>
 
 

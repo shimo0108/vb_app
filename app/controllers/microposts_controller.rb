@@ -1,9 +1,9 @@
 class MicropostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
   def index
-    @current_user = current_user
     if user_signed_in?
       @micropost  = current_user.microposts.new
       @feed_items = current_user.feed.includes(:user).page(params[:page]).per(5)
@@ -24,8 +24,8 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "削除が完了しました。"
-    redirect_to request.referrer || root_url
+      flash[:success] = "削除が完了しました。"
+      redirect_to request.referrer || root_url
   end
 
   private

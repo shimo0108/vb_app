@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @players = Player.includes(user: [image_attachment: :blob]).first(3)
     @team = current_user.team
     @teams = Team.includes(user: [image_attachment: :blob]).first(3)
-    @current_user = current_user
+    @microposts = Micropost.includes(user: :image_attachment).page(params[:page]).per(10)
   end
 
   def update
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def followers
     @title = "フォロワーユーザー一覧"
     @user = User.find(params[:id])
-    @users = @user.followers.page(params[:page]).per(10)
+    @users = @user.followers.includes(:image_attachment).page(params[:page]).per(10)
     render "show_follow"
   end
 
