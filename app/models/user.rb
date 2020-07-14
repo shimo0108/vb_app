@@ -21,8 +21,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :nickname, presence: true, length: { maximum: 50 }
-  validates :first_name, presence: true, length: { maximum: 10 }
-  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 20 }
+  validates :last_name, presence: true, length: { maximum: 20 }
 
   def self.from_omniauth(auth)
     find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
