@@ -18,10 +18,13 @@ gem "faker"
 gem "mini_magick"
 gem "ransack"
 gem "kaminari"
+gem "dotenv-rails"
 
 # ログイン機能
 gem "devise"
 gem "omniauth-twitter"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 
 # 日本語化
 gem "devise-i18n"
@@ -55,5 +58,4 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
-  gem "rails-controller-testing"
 end
