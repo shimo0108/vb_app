@@ -6,7 +6,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :facebook]
 
   has_many :microposts, dependent: :destroy
   has_many :active_follow_members, class_name: "FollowMember", foreign_key: "follower_id", dependent: :destroy
@@ -28,7 +28,11 @@ class User < ApplicationRecord
     find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.nickname = auth["info"]["nickname"]
+      if user.nickname?
+        user.nickname = auth["info"]["nickname"]
+      else
+        user.nickname = "未入力"
+      end
       user.password = Devise.friendly_token[0, 20]
       user.email = User.dumy_email(auth)
       user.first_name = auth[:info][:name]
