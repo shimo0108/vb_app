@@ -19,6 +19,7 @@ gem "mini_magick"
 gem "ransack"
 gem "kaminari"
 gem "dotenv-rails"
+gem "font-awesome-sass", "~> 5.4.1"
 
 # ログイン機能
 gem "devise"

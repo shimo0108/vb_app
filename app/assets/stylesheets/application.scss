@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 // ログイン画面
 .container-login {
@@ -8,6 +10,15 @@
 }
 body{
   color: seashell;
+}
+.twitter-btn{
+  background-color:#00acee;
+}
+.facebook-btn{
+  background-color:#3B5998;
+}
+.my-white{
+  color: white;
 }
 
 // 「ログインしました」などのフラッシュ用スタイル
