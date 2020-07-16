@@ -1,9 +1,9 @@
 <% provide(:title, @title) %>
-<div class="home_content_left col-lg-3">
+<div class="home_content_left col-md-3">
   <%= render "shared/side_menu" %>
 </div>
 
-<div class="home_content_right col-lg-9">
+<div class="home_content_right col-md-9">
   <h3><%= @title %></h3>
     <% if @users.any? %>
       <div class="row">

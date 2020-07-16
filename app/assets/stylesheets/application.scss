@@ -69,14 +69,15 @@ h3{
 
 .home_content_left {
   background-color: rgb(202, 196, 207);
-  
+  li{
+    list-style: none;
+  }
 }
 
 //ホーム画面右部分のレイアウト
 
 .home_content_right{
   background-image : url( background_img.jpg);
-  background-size: cover;
 }
 
 //user_indexの各カードレイアウト
@@ -179,7 +180,8 @@ span.picture {
 }
 @media screen and (max-width:576px){
   .home_content_left{
-    margin: 0,20px;
+    margin: 0,20px;  
+
   }
   .card{
     margin-left: 10%;
