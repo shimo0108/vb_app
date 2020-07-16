@@ -66,8 +66,10 @@ h3{
 }
 
 //ホーム画面左部分のレイアウト
+
 .home_content_left {
   background-color: rgb(202, 196, 207);
+  
 }
 
 //ホーム画面右部分のレイアウト
@@ -167,4 +169,20 @@ span.picture {
 
 .users.follow {
   padding: 0;
+}
+
+/*-- スマホ版表示CSS  --*/
+@media screen and (max-width:767px){
+  .home_content_sidemenu{
+    display:none;
+  }
+}
+@media screen and (max-width:576px){
+  .home_content_left{
+    margin: 0,20px;
+  }
+  .card{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }

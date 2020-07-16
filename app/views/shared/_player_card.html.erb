@@ -1,5 +1,5 @@
 <% @players.each do |player| %>
-<div class="index_content col-lg-4 col-md-6 mb-4">
+<div class="index_content col-lg-4 col-md-6 col-sm-6 mb-4">
   <div class="card h-100">
     <%if player.user.image.attached? %>
       <%= image_tag player.user.image.variant(resize:"200x200^").processed %>

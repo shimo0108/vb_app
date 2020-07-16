@@ -1,15 +1,10 @@
 <% provide(:title,"ホーム ")%>
 
-<div class="home_content_left col-lg-3">
+<div class="home_content_left col-md-3">
   <%= render "shared/side_menu" %>
-    <small>テスト用　ユーザー一覧</small>
-      <% @users.each do |user| %> 
-        <p><%= link_to "#{user.nickname}さん", user_path(user.id)%></p>
-      <hr>
-      <% end %>
 </div>
     
-<div class="home_content_right col-lg-9">
+<div class="home_content_right col-md-9">
   <div class="top_title">
     <h1>LET'S VOLLEY BALL</h1>
       <small>LET'S VOLLEY BALLは<br>
