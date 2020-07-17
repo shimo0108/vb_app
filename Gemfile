@@ -35,10 +35,6 @@ gem "bootstrap", "~> 4.4.1"
 gem "devise-bootstrap-views", "~> 1.0"
 gem "jquery-rails"
 
-group :production do
-  gem "pg", "0.20.0"
-end
-
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)
   gem "factory_bot_rails"
@@ -63,4 +59,8 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
+end
+
+group :production do
+  gem "pg", "0.20.0"
 end
