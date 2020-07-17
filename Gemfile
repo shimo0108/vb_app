@@ -10,7 +10,7 @@ gem "jbuilder", "~> 2.5"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.4"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
+
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "websocket-extensions"
@@ -36,11 +36,16 @@ gem "bootstrap", "~> 4.4.1"
 gem "devise-bootstrap-views", "~> 1.0"
 gem "jquery-rails"
 
+group :production do
+  gem "pg", "0.20.0"
+end
+
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-rails"
+  gem "sqlite3"
 end
 
 group :development do
