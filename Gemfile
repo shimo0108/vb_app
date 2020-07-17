@@ -40,7 +40,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-rails"
-  gem "sqlite3", group: :development
+  gem "sqlite3", group: [:development, :test]
 end
 
 group :development do
@@ -62,5 +62,5 @@ group :test do
 end
 
 group :production do
-  gem "pg", "0.20.0"
+  gem "pg", group: :production
 end
