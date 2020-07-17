@@ -10,7 +10,6 @@ gem "jbuilder", "~> 2.5"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.4"
 gem "sass-rails", "~> 5.0"
-
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "websocket-extensions"
