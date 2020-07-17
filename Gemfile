@@ -40,7 +40,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-rails"
-  gem "sqlite3"
+  gem "sqlite3", group: :development
 end
 
 group :development do
