@@ -18,13 +18,20 @@
     <div class="chat">
       <% if @messages.present? %>
         <% @messages.each do |message| %>
-          <div class="chat-box">
-            <div class="chat-hukidashi"> <strong><%= message.content %></strong> <br>
+        <%if current_user == message.user%>
+            <div class="chat-hukidashi-left"> <strong><%= message.content %></strong> <br>
               <small>by <strong><%= link_to "#{message.user.nickname}さん", "/users/#{message.user.id}"%></strong></small>
                 <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
                 <hr>
             </div>
-          </div>
+        <%else%>
+            <div class="chat-hukidashi-right"> <strong><%= message.content %></strong> <br>
+              <small>by <strong><%= link_to "#{message.user.nickname}さん", "/users/#{message.user.id}"%></strong></small>
+                <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
+                <hr>
+            </div>
+        <% end %>
+        <hr>
         <% end %>
       <% end %>
     </div>

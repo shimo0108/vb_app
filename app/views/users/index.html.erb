@@ -18,23 +18,25 @@
     <div class="row">
       <%= render "shared/player_card" %>       
     </div>
+    <div class="details">
        <%= link_to 'もっと見る', "/players/" , class: 'nav-link' %>
-
+    </div>
   <div class="sub_title"><h3>チームを探す</h3></div><br>
     <div class="row">
       <%= render "shared/team_card" %>
     </div>
+    <div class="details">
       <%= link_to 'もっと見る', "/teams/" , class: 'nav-link' %>
-
+    </div>
   <div class="sub_title"><h3>タイムラインをみる</h3></div><br>
     <% if @microposts.any? %>
       <ol class="microposts">
-        <% @microposts.each do |micropost|%>
+        <% @microposts.each do |micropost|%> 
           <li id="タイムライン<%= micropost.id %>">
             <%if micropost.user.image.attached? %>
-              <%= image_tag micropost.user.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed %><hr>   
+              <%= image_tag micropost.user.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed %>   
             <% else %>
-              <img class="img-top" src="http://placehold.it/80x80?text=LET'S VOLLEY BALL"><hr>   
+              <img class="img-top" src="http://placehold.it/80x80?text=LET'S VOLLEY BALL">
             <% end %>
             <span class="user"><%= link_to micropost.user.nickname, micropost.user %></span>
             <span class="content"><%= micropost.content %></span>

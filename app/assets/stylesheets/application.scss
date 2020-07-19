@@ -36,21 +36,104 @@ h3{
   font-weight: bold;
 }
 .top_title{
-  width: 80%;
-  height: 600px;
   text-align: center;
-  padding-left: 80px;
-  font-size: 2rem;
+  color: #f5f5f5;/*文字色*/
+  padding: 3em 0 20rem 0;/*上下の余白*/
+  border-bottom: solid 3px#f5f5f5;/*下線*/
   small{
     font-size: 1rem;
   }
 }
 .sub_title{
   text-align: center;
+  color: #f5f5f5;/*文字色*/
+  padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #f5f5f5;/*上線*/
+  border-bottom: solid 3px#f5f5f5;/*下線*/
 }
+.details{
+  color: #000;
+  border-top: 4px solid #d8dcdc;
+  border-right: 4px solid #666;
+  border-bottom: 4px solid #333;
+  border-left: 4px solid #868888;
+  border-radius: 0;
+  background-image: -webkit-linear-gradient(135deg, #333 0%, #868888 20%, #d8dcdc 34%, white 53%, #666 100%);
+  background-image: linear-gradient(-45deg, #333 0%, #868888 20%, #d8dcdc 34%, white 53%, #666 100%);
+  text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
+  a{
+    text-align: center;
+  }
+  .details:hover {
+     text-shadow: 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff;
+  }
+}
+
+.user{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  color: rgba(0, 69, 212, 0.47);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+  a{
+   color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+//メッセージ画面のレイアウト
+.chat-hukidashi-left{
+  position: relative;
+  display: block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  :before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+  }
+}
+.chat-hukidashi-right{
+  position: relative;
+  display: block;
+  margin: 1.5em 15px 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  :before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-left: 15px solid #e0edff;
+  }
+}
+.img-top{
+  float:right;
+}
+
 //プロフィール画面のレイアウト
 .profile-title{
   text-align: center;
+  
 }
 .profile-image{
   text-align: center;
@@ -73,6 +156,17 @@ h3{
     list-style: none;
   }
 }
+.info-tag{
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  border-bottom: solid 3px #668ad8;
+  border-left: solid 3px #668ad8;
+  color: #668ad8;
+  transition: .4s;
+}
 
 //ホーム画面右部分のレイアウト
 
@@ -81,18 +175,36 @@ h3{
 }
 
 //user_indexの各カードレイアウト
-.card-text{
-  color: darken($color: #000000, $amount: 0);
-}
-.card-subtitle{
-  color: darken($color: #000000, $amount: 0);
-}
-.card-title{
-  color: darken($color: #000000, $amount: 0);
+.card{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(#53565d 0%, black  100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #53565d;
+  a{color: whitesmoke;}
 }
 .position-name{
   color: darken($color: #000000, $amount: 0);
 }
+.position-name{
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #00bcd4;
+  border-top: solid 3px #00a3d4;
+  border-bottom: solid 3px #00a3d4;
+  transition: .4s;
+}
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {          
   border: none;     
@@ -173,11 +285,6 @@ span.picture {
 }
 
 /*-- スマホ版表示CSS  --*/
-@media screen and (max-width:767px){
-  .home_content_sidemenu{
-    display:none;
-  }
-}
 @media screen and (max-width:576px){
   .home_content_left{
     margin: 0,20px;  

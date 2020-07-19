@@ -1,13 +1,13 @@
 <% @players.each do |player| %>
 <div class="index_content col-lg-4 col-md-6 col-sm-6 mb-4">
-  <div class="card h-100">
+  <div class="card h-100 ">
     <%if player.user.image.attached? %>
       <%= image_tag player.user.image.variant(resize:"200x200^").processed %>
     <% else %>
        <img class="card-img-top" src="http://placehold.it/700x400?text=LET'S VOLLEY BALL">
     <% end %>
     <div class="card-body">
-      <h4 class="card-title"><%= link_to "#{player.user.nickname}", user_path(player.user.id)%>( <small><%= player.prefecture%></small>)<small><%= player.gender %></small><hr></h4>
+      <h4 class="card-title"><%= link_to "#{player.user.nickname}", user_path(player.user.id)%>( <small><%= player.prefecture%></small>)<small><%= player.gender %></small></h4><hr>
       <h5 class="card-subtitle" >希望ポジション</h5>
         <small class="position-name"><%= player.positions.pluck(:display_name).join(", ") %></small><hr>
       <h5 class="card-subtitle" >練習参加可能日(<%= player.available_day%>)</h5><hr>

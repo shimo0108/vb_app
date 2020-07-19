@@ -1,39 +1,39 @@
 <div class="home_content_sidemenu">
 <ul>
   <li>
-    <span class="fa-li"><i class="fab fa-twitter"></i></span><%= link_to "ホーム", root_path %>
+    <%= link_to root_path, method: :get do %><i class="fa fa-home"></i>  ホーム<% end %>
   </li>
   <hr>
   <li>
-    <%= link_to "メッセージ", rooms_path%>
+    <%= link_to rooms_path, method: :get do%><i class="fas fa-envelope"></i>  メッセージ<% end %>
   </li>
   <hr>
   <li>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
+      <%= link_to user_path(current_user.id), method: :get do %><i class="fas fa-user-alt"></i>  プロフィール<% end %>
   </li>
    <hr>
   <li>
-    <%= link_to "タイムライン", microposts_path %>
+    <%= link_to microposts_path, method: :get do %><i class="fas fa-comment-dots"></i>  タイムライン<% end %>
   </li>
    <hr>
 </ul>
 
 <% if current_user.team.present? %>
-   <p class="small">
+   <div class="info-tag">
       <%= link_to "マイチーム情報を編集する", edit_team_path(current_user.team)%>
-    </p>
+    </div>
   <% else %>
-    <p class="small">
+    <div class="info-tag">
       <%= link_to "チーム情報の登録はこちらから", "/teams/new"%>
-    </p>
+    </div>
 <%end%>
 <% if current_user.player.present? %>
-   <p class="small">
+   <div class="info-tag">
       <%= link_to "マイプレイヤー情報を編集する", edit_player_path(current_user.player)%>
-    </p>
+    </div>
   <% else %>
-    <p class="small">
+    <div class="info-tag">
       <%= link_to "プレイヤー情報の登録はこちらから", "/players/new"%>
-    </p>
+    </div>
 <%end%>
 </div>
