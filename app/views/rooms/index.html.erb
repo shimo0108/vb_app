@@ -10,7 +10,7 @@
       <div class="users-index-item">
         <div class="user-right">
           <%= link_to room_path(entry.room.id) do %>
-            <%= entry.user.nickname %>
+            <%= entry.user.nickname %>さんからのメッセージ　
               <small> 更新日 <%= entry.room.messages.order(created_at: :desc).first.try(:created_at) %></small><br>
           <% end %>
             <%= entry.room.messages.order(created_at: :desc).first.try(:content) %>      
