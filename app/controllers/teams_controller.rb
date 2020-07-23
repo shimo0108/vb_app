@@ -23,7 +23,7 @@ class TeamsController < ApplicationController
               TeamPosition.create!(team_id: @team.id, position_id: position_id)      
             end
           flash[:success] = "登録が完了しました。"
-          redirect_to root_path
+          redirect_to teams_path
       rescue
         flash[:danger] = "必須項目を入力してください。"
         render :new
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
               TeamPosition.create!(team_id: @team.id, position_id: position_id)            
             end
           flash[:success] = "登録が完了しました。"
-          redirect_to root_path  
+          redirect_to teams_path  
       rescue
         flash[:danger] = "必須項目を入力してください。"
         render :edit
@@ -58,7 +58,7 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
       if @team.destroy
         flash[:success] = "削除が完了しました。"
-        redirect_to root_path
+        redirect_to teams_path
       else 
         flash.now[:danger] = "削除が失敗しました。"
         render :index
