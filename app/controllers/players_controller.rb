@@ -23,7 +23,7 @@ class PlayersController < ApplicationController
               PlayerPosition.create!(player_id: @player.id, position_id: position_id)            
             end
           flash[:success] = "登録が完了しました。"
-          redirect_to root_path
+          redirect_to players_path
       rescue
         flash[:danger] = "必須項目を入力してください。"
         render :new
@@ -47,7 +47,7 @@ class PlayersController < ApplicationController
               PlayerPosition.create!(player_id: @player.id, position_id: position_id)        
             end
           flash[:success] = "登録が完了しました。"
-          redirect_to root_path  
+          redirect_to players_path  
       rescue
         flash[:danger] = "必須項目を入力してください。"
         render :edit
@@ -58,7 +58,7 @@ class PlayersController < ApplicationController
       @player = Player.find(params[:id])
       if @player.destroy
         flash[:success] = "削除が完了しました。"
-        redirect_to root_path
+        redirect_to players_path
       else 
         flash.now[:danger] = "削除が失敗しました。"
         render :index

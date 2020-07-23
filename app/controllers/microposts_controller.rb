@@ -15,7 +15,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.create(micropost_params)
     if @micropost.save
       flash[:success] = "タイムラインを投稿しました。"
-      redirect_to root_url
+      redirect_to microposts_path
     else
       @feed_items = []
       render "user/index"
@@ -25,7 +25,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
       flash[:success] = "削除が完了しました。"
-      redirect_to request.referrer || root_url
+      redirect_to request.referrer || microposts_path
   end
 
   private
@@ -35,6 +35,6 @@ class MicropostsController < ApplicationController
   end
   def correct_user
     @micropost = current_user.microposts.find_by(id: params[:id])
-    redirect_to root_url if @micropost.nil?
+    redirect_to "user/index" if @micropost.nil?
   end
 end

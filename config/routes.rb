@@ -5,6 +5,7 @@ Rails.application.routes.draw do
                        omniauth_callbacks: "omniauth_callbacks",
                        passwords: "users/passwords",
                        registrations: "users/registrations",
+
                      }
   resources :users do
     member do
@@ -18,5 +19,8 @@ Rails.application.routes.draw do
   resources :positions
   resources :microposts
   resources :follow_members, only: [:create, :destroy]
-  root "users#index"
+
+  devise_scope :user do
+    root :to => "devise/sessions#new"
+  end
 end

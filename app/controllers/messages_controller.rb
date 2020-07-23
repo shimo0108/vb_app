@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
         redirect_to room_path(@message.room_id)
       end
     else
-      redirect_back(fallback_location: root_path)
+      render "user/index"
     end
   end
 
