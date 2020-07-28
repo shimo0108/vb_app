@@ -6,7 +6,8 @@
 .container-login {
   @extend .container-fluid; 
   background-image : url( background_img.jpg);
-  background-size: cover;    
+  background-size: cover;
+    
 }
 body{
   color: seashell;
@@ -205,6 +206,8 @@ h3{
 
 .home_content_right{
   background-image : url( background_img.jpg);
+  background-size: cover;
+
 }
 
 //user_indexの各カードレイアウト
@@ -321,8 +324,14 @@ span.picture {
 @media screen and (max-width:576px){
   .home_content_left{
     margin: 0,20px;  
+  }
+
+  .home_content_right{
+    background-image : url( background_img.jpg);
+    background-size: contain;
 
   }
+
   .card{
     margin-left: 10%;
     margin-right: 10%;

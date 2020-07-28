@@ -2,10 +2,11 @@
   <div class="home_content_left col-md-3">
     <%= render "shared/side_menu" %>
   </div>
+  
   <div class="home_content_right col-md-9">
     <h1><%= current_user.nickname %></h1>
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
          <%if current_user.image.attached? %>
           <div class="profile-image"><%= image_tag current_user.image.variant(resize:'250x200').processed %></div>
         <% else %>
@@ -13,18 +14,18 @@
         <% end %>
       </div>
       <div class="col-8">
-      <span>タイムライン（<%= current_user.microposts.count %>）</span>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <div class="micropost_form">
-      <%= render "shared/micropost_form" %>
+        <span>タイムライン（<%= current_user.microposts.count %>）</span>
+          <section class="stats">
+            <%= render 'shared/stats' %>
+          </section>
+        <div class="micropost_form">
+          <%= render "shared/micropost_form" %>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-    <div class="col-md-8">
-      <h3>タイムライン</h3>
-      <%= render 'shared/feed' %>
-    </div>
+      <div>
+        <h3>タイムライン</h3>
+        <%= render 'shared/feed' %>
+      </div>
   </div>
 <% end %>
