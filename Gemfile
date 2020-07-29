@@ -19,6 +19,7 @@ gem "ransack"
 gem "kaminari"
 gem "dotenv-rails"
 gem "font-awesome-sass", "~> 5.4.1"
+gem "mysql2", "0.5.3"
 
 # ログイン機能
 gem "devise"
@@ -58,8 +59,4 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
-end
-
-group :production do
-  gem "mysql2"
 end
