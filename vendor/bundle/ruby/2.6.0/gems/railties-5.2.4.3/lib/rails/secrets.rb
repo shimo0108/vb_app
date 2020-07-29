@@ -27,8 +27,6 @@ module Rails
           require "erb"
 
           secrets = YAML.load(ERB.new(preprocess(path)).result) || {}
-          all_secrets.merge!(secrets["shared"].deep_symbolize_keys) if secrets["shared"]
-          all_secrets.merge!(secrets[env].deep_symbolize_keys) if secrets[env]
         end
       end
 
@@ -58,49 +56,50 @@ module Rails
       end
 
       private
-        def handle_missing_key
-          raise MissingKeyError
+
+      def handle_missing_key
+        raise MissingKeyError
+      end
+
+      def read_key_file
+        if File.exist?(key_path)
+          IO.binread(key_path).strip
         end
+      end
 
-        def read_key_file
-          if File.exist?(key_path)
-            IO.binread(key_path).strip
-          end
+      def key_path
+        @root.join("config", "secrets.yml.key")
+      end
+
+      def path
+        @root.join("config", "secrets.yml.enc").to_s
+      end
+
+      def preprocess(path)
+        if path.end_with?(".enc")
+          decrypt(IO.binread(path))
+        else
+          IO.read(path)
         end
+      end
 
-        def key_path
-          @root.join("config", "secrets.yml.key")
-        end
+      def writing(contents)
+        tmp_file = "#{File.basename(path)}.#{Process.pid}"
+        tmp_path = File.join(Dir.tmpdir, tmp_file)
+        IO.binwrite(tmp_path, contents)
 
-        def path
-          @root.join("config", "secrets.yml.enc").to_s
-        end
+        yield tmp_path
 
-        def preprocess(path)
-          if path.end_with?(".enc")
-            decrypt(IO.binread(path))
-          else
-            IO.read(path)
-          end
-        end
+        updated_contents = IO.binread(tmp_path)
 
-        def writing(contents)
-          tmp_file = "#{File.basename(path)}.#{Process.pid}"
-          tmp_path = File.join(Dir.tmpdir, tmp_file)
-          IO.binwrite(tmp_path, contents)
+        write(updated_contents) if updated_contents != contents
+      ensure
+        FileUtils.rm(tmp_path) if File.exist?(tmp_path)
+      end
 
-          yield tmp_path
-
-          updated_contents = IO.binread(tmp_path)
-
-          write(updated_contents) if updated_contents != contents
-        ensure
-          FileUtils.rm(tmp_path) if File.exist?(tmp_path)
-        end
-
-        def encryptor
-          @encryptor ||= ActiveSupport::MessageEncryptor.new([ key ].pack("H*"), cipher: @cipher)
-        end
+      def encryptor
+        @encryptor ||= ActiveSupport::MessageEncryptor.new([key].pack("H*"), cipher: @cipher)
+      end
     end
   end
 end
