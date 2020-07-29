@@ -19,7 +19,6 @@ gem "ransack"
 gem "kaminari"
 gem "dotenv-rails"
 gem "font-awesome-sass", "~> 5.4.1"
-gem "sqlite3"
 
 # ログイン機能
 gem "devise"
@@ -41,6 +40,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-rails"
   gem "rspec-rails"
+  gem "sqlite3"
 end
 
 group :development do
