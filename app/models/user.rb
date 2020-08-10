@@ -6,7 +6,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter, :facebook]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter]
 
   has_many :microposts, dependent: :destroy
   has_many :active_follow_members, class_name: "FollowMember", foreign_key: "follower_id", dependent: :destroy
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { maximum: 20 }
 
   def self.from_omniauth(auth)
-    find_or_initialize_by(provider: auth["provider"], uid: auth["uid"]) do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       if user.nickname?

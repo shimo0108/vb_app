@@ -72,7 +72,9 @@ h3{
      text-shadow: 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff, 0 0 7px #fff;
   }
 }
-
+.wrap {
+     overflow: hidden;
+ }
 .user{
   display: inline-block;
   padding: 0.5em 1em;
@@ -250,7 +252,7 @@ h3{
   color: #696969;   
 }
 header,footer{
-  width: 102%;
+  width: 100%;
 }
 /* タイムラインのレイアウト　*/
 
