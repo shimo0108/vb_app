@@ -58,8 +58,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'メールアドレスが登録された際に小文字で登録される' do
-    user.email = 'TEST@EXaMPlE.Com'
-    user.save!
+    user.email = 'TEST100@EXaMPlE.Com'
+    user.save
     expect(user.reload.email).to eq user.email.downcase
   end
 
