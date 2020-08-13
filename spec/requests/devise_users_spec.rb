@@ -43,4 +43,44 @@ RSpec.describe "User認証", type: :request do
       end
     end
   end
+
+  describe 'show' do
+    context "userが認証されている" do
+      before do
+        @user = FactoryBot.create(:user)
+        
+      end
+      it "正常なレスポンスが返る" do
+        sign_in @user
+        get user_path((@user.id))
+        expect(response).to be_successful
+      end
+
+      it "200レスポンスが返る" do
+        sign_in @user
+        get user_path((@user.id))
+        expect(response).to have_http_status "200"
+      end
+    end
+
+    context "不正なユーザーのアクセス" do
+      before do
+        @user = FactoryBot.create(:user)
+      end
+      it "正常なレスポンスが返る" do
+        get user_path((@user.id))
+        expect(response).to_not be_successful
+      end
+
+      it "302レスポンスが返る" do
+        get user_path((@user.id))
+        expect(response).to have_http_status "302"
+      end
+
+      it "不正なアクセスがリダイレクトされる" do
+        get user_path((@user.id))
+        expect(response).to redirect_to "/users/sign_in"
+      end
+    end           
+  end
 end
