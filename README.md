@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Blue Greyscale Volleyball Winning Post UAAP_NCAA Facebook Post](https://user-images.githubusercontent.com/60634601/90241998-257a6f00-de67-11ea-8c6d-bddd5a462bd8.jpg)
 
 Things you may want to cover:
 

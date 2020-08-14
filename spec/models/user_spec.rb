@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
     it "should destroy associated microposts" do
       microposts = user.microposts.dup
       user.destroy
-      microposts.expect_not be_empty
+      expect(microposts).to_not be_empty
       microposts.each do |micropost|
         Micropost.find_by_id(micropost.id).should be_nil
       end
