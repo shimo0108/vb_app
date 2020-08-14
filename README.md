@@ -1,6 +1,6 @@
 # README
 
-![Blue Greyscale Volleyball Winning Post UAAP_NCAA Facebook Post](https://user-images.githubusercontent.com/60634601/90241998-257a6f00-de67-11ea-8c6d-bddd5a462bd8.jpg)
+![8C28C274-4E6C-4342-A39D-DEDAC0F4C78B](https://user-images.githubusercontent.com/60634601/90243285-93c03100-de69-11ea-9e5a-b43901b4a8da.jpeg)
 
 Things you may want to cover:
 
