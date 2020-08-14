@@ -160,14 +160,9 @@ h3{
     border-left: 15px solid #e0edff;
   }
 }
-.user-right{
-  position: relative;
-	padding: 20px 20px 20px 38px;
-	font-size:20px;
-	border: 1px solid #D8D8D8;
-	border-top: 4px solid #325A8C;
-	box-shadow: 0 -1px 0 rgba(255, 255, 255, 1) inset;
-
+.home_content_right_message{
+  background-image : url( background_img.jpg);
+  background-size: cover;
 }
 //プロフィール画面のレイアウト
 .profile-title{
@@ -211,7 +206,7 @@ h3{
 
 .home_content_right{
   background-image : url( background_img.jpg);
-  background-size: cover;
+  background-size: contain;
 
 }
 
@@ -255,7 +250,10 @@ header,footer{
   width: 100%;
 }
 /* タイムラインのレイアウト　*/
-
+.home_content_right-timeline{
+  background-image : url( background_img.jpg);
+  background-size: cover;
+}
 .microposts {
   list-style: none;
   padding: 0;
@@ -332,6 +330,11 @@ span.picture {
   }
 
   .home_content_right{
+    background-image : url( background_img.jpg);
+    background-size: contain;
+
+  }
+  .home_content_right-timeline{
     background-image : url( background_img.jpg);
     background-size: contain;
 
