@@ -29,7 +29,10 @@ Twitterカード機能<br>
 レスポンシブ対応<br>
 
 
-* Configuration
+* ユーザーログイン
+![vb_app1-min](https://user-images.githubusercontent.com/60634601/90308022-d8ee6c80-df16-11ea-9e7f-ae24f505d2e8.gif)
+
+deviseを使用しておりログイン。ログアウトの機能を実装しました。
 
 * Database creation
 
