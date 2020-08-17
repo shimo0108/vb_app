@@ -29,20 +29,49 @@ Twitterカード機能<br>
 レスポンシブ対応<br>
 
 
-* ユーザーログイン
+ユーザーログイン
 ![vb_app1-min](https://user-images.githubusercontent.com/60634601/90308022-d8ee6c80-df16-11ea-9e7f-ae24f505d2e8.gif)
 
 deviseを使用しておりログイン。ログアウトの機能を実装しました。
+<br>
+かんたんログイン機能
+![vb_app_2-min](https://user-images.githubusercontent.com/60634601/90353552-7bc2fa00-e081-11ea-8674-e9b8043399ea.gif)
 
-* Database creation
+<br>
+Twitter/facebook連携ログイン
+![vb_app_3-min](https://user-images.githubusercontent.com/60634601/90353601-972e0500-e081-11ea-89cc-218a481996af.gif)
 
-* Database initialization
+<br>
+ページネーション機能
+![vb_app_4-min](https://user-images.githubusercontent.com/60634601/90353653-bc227800-e081-11ea-9c3a-b7755271b769.gif)
 
-* How to run the test suite
+<br>
+一般的なCRUD機能
+![vb_app_5-min](https://user-images.githubusercontent.com/60634601/90353675-ce9cb180-e081-11ea-9d7d-9f30b66961a0.gif)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+<br>
+ユーザー/チーム検索機能
+![vb_app_6-min](https://user-images.githubusercontent.com/60634601/90353708-ed02ad00-e081-11ea-8fca-f84497636eb4.gif)
 
-* ...
-＃vb_app
+<br>
+画像アップロード機能（ActiveStorage使用）
+![vb_app_7-min](https://user-images.githubusercontent.com/60634601/90353725-fc81f600-e081-11ea-9763-22c564ca20a4.gif)
+
+<br>
+ダイレクトメッセージ機能
+![vb_app_8](https://user-images.githubusercontent.com/60634601/90353746-0d326c00-e082-11ea-8579-735fa8a1fb3a.gif)
+<br>
+フォロー機能
+![vb_app_9-min](https://user-images.githubusercontent.com/60634601/90335075-0584b000-e00d-11ea-9685-075ede1b46b4.gif)
+
+<br>
+Twitterカード機能
+![vb_app_10-min](https://user-images.githubusercontent.com/60634601/90353776-22a79600-e082-11ea-9651-8874dad82e31.gif)
+<br>
+レスポンシブ対応
+![vb_app_11-min](https://user-images.githubusercontent.com/60634601/90353815-45d24580-e082-11ea-8aad-4db21a257094.gif)
+
+<br>
+
+

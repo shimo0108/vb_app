@@ -2,9 +2,9 @@
 <div class="index_content col-lg-4 col-md-6 col-sm-6 mb-4">
   <div class="card h-100 ">
     <%if player.user.image.attached? %>
-      <%= image_tag player.user.image.variant(resize:"200x200^").processed %>
+    <%= image_tag player.user.image.variant(combine_options:{gravity: :center, resize:"440x330^"}), class:"card-img-top",alt:"Card image cap" %>
     <% else %>
-       <img class="card-img-top" src="http://placehold.it/700x400?text=LET'S VOLLEY BALL">
+       <img class="card-img-top" src="http://placehold.it/700x400.ping?text=LET'S VOLLEY BALL">
     <% end %>
     <div class="card-body">
       <h4 class="card-title"><%= link_to "#{player.user.nickname}", user_path(player.user.id)%>( <small><%= player.prefecture%></small>)<small><%= player.gender %></small></h4><hr>

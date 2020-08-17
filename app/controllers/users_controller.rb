@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(image_params)
+    @user.update(image_params)  
+    flash[:notice] = '編集が完了しました。'
     redirect_to user_path
   end
 

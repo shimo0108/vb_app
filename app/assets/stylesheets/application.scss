@@ -120,6 +120,9 @@ h3{
   }
 
 //メッセージ画面のレイアウト
+.home_content_message{
+  background-image: none;
+}
 .chat-hukidashi-left{
   position: relative;
   display: block;
@@ -160,9 +163,8 @@ h3{
     border-left: 15px solid #e0edff;
   }
 }
-.home_content_right_message{
-  background-image : url( background_img.jpg);
-  background-size: cover;
+.home_content_message{
+  background-color: darken($color: #000000, $amount: 0);
 }
 //プロフィール画面のレイアウト
 .profile-title{
@@ -239,6 +241,10 @@ h3{
   border-top: solid 3px #00a3d4;
   border-bottom: solid 3px #00a3d4;
   transition: .4s;
+}
+
+.card-img-top{
+  height: 40%;
 }
 
 /*ページネーション自体のデザイン*/
@@ -321,6 +327,10 @@ span.picture {
 
 .users.follow {
   padding: 0;
+}
+//フォローユーザー画面
+.home_content_follow{
+  background-color: darken($color: #000000, $amount: 0);
 }
 
 /*-- スマホ版表示CSS  --*/

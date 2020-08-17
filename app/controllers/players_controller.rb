@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
     @current_user = current_user
     @positions = Position.all
     @search = Player.ransack(params[:q])
-    @players = @search.result.includes(user: :image_attachment).page(params[:page]).per(6)
+    @players = @search.result.includes(user: [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def new

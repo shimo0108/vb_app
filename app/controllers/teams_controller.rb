@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
     @current_user = current_user
     @positions = Position.all
     @search = Team.ransack(params[:q])
-    @teams = @search.result.includes(user: :image_attachment).page(params[:page]).per(6)
+    @teams = @search.result.includes(user: [image_attachment: :blob]).page(params[:page]).per(6)
   end
 
   def new
