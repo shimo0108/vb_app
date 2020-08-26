@@ -19,6 +19,7 @@ gem "ransack"
 gem "kaminari"
 gem "dotenv-rails"
 gem "font-awesome-sass", "~> 5.4.1"
+gem "pg", "~> 0.19.0"
 
 # ログイン機能
 gem "devise"
@@ -61,5 +62,4 @@ group :test do
 end
 
 group :production do
-  gem "pg", "~> 0.19.0"
 end

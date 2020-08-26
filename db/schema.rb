@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_07_08_071442) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
   end
 
   create_table "entries", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_entries_on_room_id"
@@ -53,8 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
@@ -72,8 +75,8 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
   end
 
   create_table "player_positions", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "position_id"
+    t.bigint "player_id"
+    t.bigint "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_player_positions_on_player_id"
@@ -83,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
   create_table "players", force: :cascade do |t|
     t.integer "gender", default: 0, null: false
     t.text "comment"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "available_day", default: 0, null: false
     t.integer "prefecture", default: 0, null: false
     t.datetime "created_at", null: false
@@ -105,8 +108,8 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
   end
 
   create_table "team_positions", force: :cascade do |t|
-    t.integer "team_id"
-    t.integer "position_id"
+    t.bigint "team_id"
+    t.bigint "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["position_id"], name: "index_team_positions_on_position_id"
@@ -117,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
     t.string "name", null: false
     t.integer "gender", default: 0, null: false
     t.text "comment"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "available_day", default: 0, null: false
     t.integer "prefecture", default: 0, null: false
     t.datetime "created_at", null: false
@@ -142,4 +145,16 @@ ActiveRecord::Schema.define(version: 2020_07_08_071442) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "microposts", "users"
+  add_foreign_key "player_positions", "players"
+  add_foreign_key "player_positions", "positions"
+  add_foreign_key "players", "users"
+  add_foreign_key "team_positions", "positions"
+  add_foreign_key "team_positions", "teams"
+  add_foreign_key "teams", "users"
 end
