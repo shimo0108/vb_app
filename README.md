@@ -15,12 +15,11 @@ PostgreSQL<br>
 Docker<br>
 AWS(VPC EC2 RDS)<br>
 
-
-##データベースのER図
+* データベースのER図<hr>
 
 ![データベーススキーマ (1)](https://user-images.githubusercontent.com/60634601/91532999-19ec7500-e94a-11ea-8d44-cf6f43eb747d.png)
 
-
+作成ツールはcacooを使用。Cacooのデータベーススキーマ構成図の挿入機能を利用しデータベースの内容を変更してもゼロからやり直す必要がないよう一括変更できるように管理しています。データベースはpostgreSQLを採用。PgAdmin4を使用しcsvファイルからデータを取り込んでいます。
 
 * 実装した機能<hr>
 ユーザーログイン/ログアウト機能（Deviseを使用）<br>
