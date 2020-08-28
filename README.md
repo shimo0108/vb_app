@@ -15,6 +15,13 @@ PostgreSQL<br>
 Docker<br>
 AWS(VPC EC2 RDS)<br>
 
+
+##データベースのER図
+
+![データベーススキーマ (1)](https://user-images.githubusercontent.com/60634601/91532999-19ec7500-e94a-11ea-8d44-cf6f43eb747d.png)
+
+
+
 * 実装した機能<hr>
 ユーザーログイン/ログアウト機能（Deviseを使用）<br>
 かんたんログイン機能<br>
