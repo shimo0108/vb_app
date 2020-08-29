@@ -21,7 +21,7 @@ AWS(VPC EC2 RDS)<br>
 
 作成ツールはcacooを使用。Cacooのデータベーススキーマ構成図の挿入機能を利用しデータベースの内容を変更してもゼロからやり直す必要がないよう一括変更できるように管理しています。データベースはpostgreSQLを採用。PgAdmin4を使用しcsvファイルからデータを取り込んでいます。
 
-* データベースのER図<hr>
+* AWSの構造図<hr>
 
 ![AWS Integration ap-northeast-1](https://user-images.githubusercontent.com/60634601/91628481-106f1580-e9fb-11ea-85ed-61e9312b8061.png)
 
