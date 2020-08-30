@@ -25,6 +25,8 @@ AWS(VPC EC2 RDS)<br>
 
 ![AWS Integration ap-northeast-1](https://user-images.githubusercontent.com/60634601/91628481-106f1580-e9fb-11ea-85ed-61e9312b8061.png)
 
+インスタンスは２箇所設置し一つはWEB用サーバー、一つはDBサーバーとして使用しています。WEB用サーバーにはnginx,アプリケーションにunicornを使用しています。DBにはpostgreSQLを採用し、RDSにて管理しています。
+
 
 * 実装した機能<hr>
 ユーザーログイン/ログアウト機能（Deviseを使用）<br>
