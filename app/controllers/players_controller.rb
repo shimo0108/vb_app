@@ -22,10 +22,10 @@ class PlayersController < ApplicationController
             positions_ids.each do |position_id|              
               PlayerPosition.create!(player_id: @player.id, position_id: position_id)            
             end
-          flash[:success] = "登録が完了しました。"
+          flash[:success] = "登録が完了しました"
           redirect_to root_path
       rescue
-        flash[:danger] = "必須項目を入力してください。"
+        flash[:danger] = "必須項目を入力してください"
         render :new
       end
   end
