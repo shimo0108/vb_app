@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
         @player = Player.find(params[:id])
         @player.destroy
         redirect_to root_path
-        flash[:success] = "削除が完了しました。"
+        flash[:success] = "削除が完了しました"
    end
   
   
