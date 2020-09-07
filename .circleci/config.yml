@@ -27,7 +27,8 @@ jobs:
     # here we set TWO docker images.
     docker:
       - image: cimg/ruby:2.6.5-node # this is our primary docker image, where step commands run.
-      - image: circleci/postgres:9.5-alpine 
+      - image: circleci/9.6-postgis-ram
+
         environment: # add POSTGRES environment variables.
           POSTGRES_USER: shimosasashouta
           POSTGRES_DB: vb_test
