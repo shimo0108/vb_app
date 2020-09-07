@@ -12,7 +12,7 @@ jobs:
       - image: cimg/ruby:2.6.5-node # use a tailored CircleCI docker image.
     steps:
       - checkout # pull down our git code.
-       - run:
+      - run:
           name: Update apt-get
           command: sudo apt-get update  && sudo apt-get -y install libpq-dev # use the ruby orb to install dependencies
       # use the node orb to install our packages
