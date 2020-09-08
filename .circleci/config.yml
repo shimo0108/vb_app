@@ -39,7 +39,7 @@ jobs:
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
+      PGHOST: localhost
       PGUSER: shimosasashouta
       PGPASSWORD: password
       RAILS_ENV: test
