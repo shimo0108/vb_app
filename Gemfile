@@ -42,7 +42,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "rspec_junit_formatter"
-  gem "sqlite3", group: [:development, :test]
 end
 
 group :development do
